@@ -1,0 +1,46 @@
+/**
+ * Clearfix
+ */
+/* Establish the grid-container element.  */
+/* Align an element to the grid. */
+.masthead .feature-overlay .lyt .txb {
+  width: 100%;
+  display: inline-block;
+}
+
+.masthead .feature-overlay .lyt .txb .entry-title {
+  max-width: 100%;
+}
+
+.masthead .feature-overlay .lyt .txb.left {
+  padding-right: 25%;
+}
+
+.masthead .feature-overlay .lyt .txb.right {
+  padding-left: 25%;
+}
+
+.masthead .feature-overlay .lyt .txb.center {
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+}
+
+#site-content {
+  padding-top: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .masthead .feature-overlay .lyt .txb .entry-title {
+    font-size: 8rem;
+  }
+  #site-content {
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .masthead .feature-overlay .lyt .txb .entry-title {
+    font-size: 9rem;
+  }
+}
+/*# sourceMappingURL=homepage.css.map */

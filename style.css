@@ -1,0 +1,19 @@
+/*
+	Theme Name: MH Basic Theme
+	Theme URI: https://mheadley.com/category/developing/wordpress-themes/
+	Description: mheadley Basic theme for a site WordPress Site
+	Version: 1.5.5
+	Requires at least: 4.7	
+	Author: Michael Headley
+	Author URI: https://mheadley.com
+	Tags: Blank, HTML5, CSS3
+*/
+
+
+@media ( prefers-reduced-motion: reduce ) {
+
+	* {
+		animation-duration: 0s !important;
+		transition-duration: 0s !important;
+	}
+}

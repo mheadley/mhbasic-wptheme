@@ -1,0 +1,52 @@
+@import "../styling/_constants";
+@import "../styling/_grid";
+@import "../styling/_mixins";
+
+.masthead{
+  .feature-overlay{
+    .lyt .txb{
+      width: 100%; display: inline-block;
+      .entry-title{max-width: 100%; }
+      &.left{
+        padding-right: 25%;
+      }
+      &.right{
+        padding-left: 25%;
+      }
+      &.center{
+        padding-left: 12.5%;
+        padding-right: 12.5%;
+      }
+    }
+  }
+}
+#site-content{
+  padding-top: 10px;
+}
+
+@include media-respond("med",  $closure: "min") {
+  .masthead{
+    .feature-overlay{
+      .lyt .txb{
+        .entry-title{ font-size: 8rem;}
+      }
+    }
+  }
+
+  #site-content{
+    padding-top: 20px;
+  }
+}
+
+@include media-respond("large",  $closure: "min") {
+  .masthead{
+    .feature-overlay{
+      .lyt .txb{
+        .entry-title{ font-size: 9rem;}
+      }
+    }
+  }
+
+
+
+}

@@ -1,0 +1,152 @@
+/**
+ * Clearfix
+ */
+/* Establish the grid-container element.  */
+/* Align an element to the grid. */
+.search-modal {
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+  opacity: 0;
+  position: fixed;
+  bottom: 0;
+  left: -9999rem;
+  top: 0;
+  -webkit-transition: opacity 0.2s linear, left 0s 0.2s linear;
+  transition: opacity 0.2s linear, left 0s 0.2s linear;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.search-modal-inner {
+  background: #fff;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.15s linear, -webkit-box-shadow 0.15s linear;
+  transition: -webkit-transform 0.15s linear, -webkit-box-shadow 0.15s linear;
+  transition: transform 0.15s linear, box-shadow 0.15s linear;
+  transition: transform 0.15s linear, box-shadow 0.15s linear, -webkit-transform 0.15s linear, -webkit-box-shadow 0.15s linear;
+  padding: 0px 25px;
+}
+
+.search-modal-inner .section-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 168rem;
+}
+
+.search-modal.active {
+  left: 0;
+  opacity: 1;
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.search-modal.active .search-modal-inner {
+  -webkit-box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.08);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.25s ease-in-out, -webkit-box-shadow 0.1s 0.25s linear;
+  transition: -webkit-transform 0.25s ease-in-out, -webkit-box-shadow 0.1s 0.25s linear;
+  transition: transform 0.25s ease-in-out, box-shadow 0.1s 0.25s linear;
+  transition: transform 0.25s ease-in-out, box-shadow 0.1s 0.25s linear, -webkit-transform 0.25s ease-in-out, -webkit-box-shadow 0.1s 0.25s linear;
+}
+
+button.search-untoggle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: -2.5rem;
+  padding: 0 2.5rem;
+}
+
+.search-modal button.search-untoggle {
+  color: inherit;
+}
+
+.search-modal.active .search-untoggle {
+  -webkit-animation: popIn both 0.3s 0.2s;
+          animation: popIn both 0.3s 0.2s;
+}
+
+.search-untoggle svg {
+  height: 1.5rem;
+  -webkit-transition: -webkit-transform 0.15s ease-in-out;
+  transition: -webkit-transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  width: 1.5rem;
+}
+
+.search-untoggle:focus svg,
+.search-untoggle:hover svg {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+/* Modal Search Form ------------------------- */
+.search-modal form {
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+
+.search-modal .search-field {
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  font-size: 2rem;
+  letter-spacing: -0.0277em;
+  height: 8.4rem;
+  margin: 0 0 0 -2rem;
+  max-width: calc(100% + 2rem);
+  padding: 0 0 0 2rem;
+  width: calc(100% + 2rem);
+}
+
+.search-modal .search-field::-webkit-input-placeholder {
+  color: inherit;
+}
+
+.search-modal .search-field:-ms-input-placeholder {
+  color: inherit;
+}
+
+.search-modal .search-field::-moz-placeholder {
+  color: inherit;
+  line-height: 4;
+}
+
+.search-modal .search-submit {
+  position: absolute;
+  right: -9999rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.search-modal .search-submit:focus {
+  right: 0;
+}
+
+.search-toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0px solid #000;
+  background-color: transparent;
+}
+/*# sourceMappingURL=search.css.map */

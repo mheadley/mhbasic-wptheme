@@ -1,0 +1,110 @@
+@import "../styling/_constants";
+@import "../styling/reset";
+@import "../styling/_mixins";
+
+html {
+  font-size: 62.5%;
+}
+body{
+  font-size: 0;
+}
+#wpwrap{
+  font-size: 1.4rem;
+  line-height: 1.45;
+  .edit-post-sidebar p:not(.edit-post-post-link__preview-label){
+    margin-bottom: 15px;
+  }
+}
+/* ------------------------------------------- */
+
+/*	MH basic Theme Editor Styles — Block Editor
+/* ------------------------------------------- */
+
+.editor-styles-wrapper {
+  letter-spacing: -0.015em;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+
+  > * {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 18px;
+  }
+}
+
+@supports (font-variation-settings: normal) {
+  .editor-styles-wrapper > * {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  }
+}
+
+
+
+.page-section-panel{
+  display: block; position: relative; 
+  border-bottom: 2px solid #b1b1b1;
+  margin-bottom: 10px;
+  .section-content-media-container{
+    min-height: 20px; display: block; position: relative; background-size: contain; background-repeat: no-repeat; position: relative;
+    &.has-media{
+      min-height: 200px; 
+    }
+    video{
+      width: 400px;
+      height: 300px;
+    }
+    .video-captions{
+      display: inline-block; position: absolute;
+      left: 340px; top: 70px; 
+    }
+
+    .video-poster{
+      padding: 5px; margin: 5px 0px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .video-timings{
+      display: inline-block; position: absolute;
+      left: 340px; top: 10px; min-width: 200px;
+      div{
+        display:  inline-block; padding-right: 10px;
+      }
+    }
+  }
+  .section-content-container{
+    position: relative;
+    font-size: 0px;
+    > div{
+      font-size: 18px;
+    }
+    .editor-container-half{
+      display: inline-block; width: 50%;
+    }
+  }
+}
+
+
+
+
+@media (min-width: 480px) {
+  /* STRUCTURE */
+
+}
+
+@media (min-width: 600px) {
+  
+}
+
+@media (min-width: 700px) {
+  
+}
+
+@media (min-width: 1000px) {
+  
+}
+
+@media (min-width: 1220px) {
+  
+}
+
+@media (min-width: 1360px) {
+  
+}

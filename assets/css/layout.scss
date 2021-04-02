@@ -1,0 +1,99 @@
+@import "../styling/_constants";
+@import "../styling/_grid";
+@import "../styling/_mixins";
+
+.post-content-list-container{	
+  font-family:  Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
+  h1, h2, h3, h4, h6, .wp-block-pullquote, .alo_easymail_widget_ok{
+    font-family:   Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
+  }
+  form{
+    @include body-font(18,30, 400);
+    input[type=submit]{
+      padding: 10px;
+    }
+  }
+  .alo_easymail_widget_ok{
+    background-color: rgba(117, 207, 13, 0.95);
+    padding: 10px;
+  }
+  #alo_easymail_page{
+    @include body-font(18,30, 400);
+    #alo_easymail_widget_feedback{
+      padding: 10px;
+      margin-bottom: 20px;
+      &.alo_easymail_widget_ok{
+        background-color: rgba(255, 0, 0, 0.95);
+      }
+      &.alo_easymail_widget_error{
+        background-color: rgba(255, 0, 0, 0.95);
+      }
+      color: #ffffff;
+    }
+    .alo_easymail_form_table{
+      width: 100%;
+      max-width: 100%;
+      td{
+        padding-right: 10px;
+        padding-bottom: 10px;
+      }
+      input[type=text]{
+        max-width: 100%;
+        border-width: 1px;
+      }
+    }
+    .alo_easymail_disclaimer{
+      input{margin-right: 10px;}
+    }
+    // input[type=text]{
+    //   background-color: transparent;
+    //   border-width: 0px;
+    //   border-bottom-width: 2px;
+    //   color: inherit;
+    // }
+    input[type=submit]{
+      font-size: 3rem;
+      text-transform: uppercase;
+      border-width: 0px;
+      margin-top: 30px;
+      padding: 10px;
+      color: #ffffff;
+    }
+  }
+  
+}
+
+
+.post-part{
+  .post-part-vertical-align.sticky{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    .align-inner{
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
+#headerWrapper .bg-wrapper{
+  opacity: 0.85;
+}
+
+@include media-respond("small",  $closure: "min") {
+  
+
+}
+
+
+@include media-respond("med",  $closure: "min") {
+ 
+}
+
+@include media-respond("large",  $closure: "min") {
+ 
+
+}

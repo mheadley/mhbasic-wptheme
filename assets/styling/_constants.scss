@@ -1,0 +1,19 @@
+$breakpoints: ("xsmall"  480) ("small"  600) ("med" 768) ("large" 1024) ("xlarge" 1200); // important to use parentheses; implict lists first level with space and the second level is the space
+$max_width: 1200px;
+$logo_height: 40;
+$header_height: 60;
+
+$header_height_tablet: 75;
+
+$header_height_desktop: 100;
+
+
+%body-padding {
+  padding: 0px 15px;
+}
+%base-transition{
+  transition: all 0.3s cubic-bezier(1,.5,.8,1);
+}
+
+$white: #ffffff;
+$red: #d61347;

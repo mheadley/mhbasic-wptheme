@@ -1,0 +1,37 @@
+/**
+ * admin only css
+ */
+ 
+  .admin-bar #headerWrapper{ top: 46px;}
+  .admin-bar #bodyWrapper{
+    padding-top: 60px;
+    top: 46px;
+  }
+  @media screen and ( min-width: 768px ){
+    .admin-bar #bodyWrapper{
+      padding-top: 100px;
+      top: 32px;
+    }
+    .admin-bar #bodyWrapper.logo-present-header{
+      padding-top: 75px;
+    }
+  }
+  @media screen and ( min-width: 783px ){
+    .admin-bar #headerWrapper{ top: 32px;}
+    .admin-bar #bodyWrapper{
+      padding-top: 100px;
+    }
+    .admin-bar #bodyWrapper.logo-present-header{
+      padding-top: 105px;
+    }
+  }
+  @media screen and ( min-width: 1024px ){
+    .admin-bar #bodyWrapper{
+      /* 32px + menu height 60px; */
+      padding-top: 120px;
+    }
+    .admin-bar #bodyWrapper.logo-present-header{
+      /* 32px + menu height 75px; */
+      padding-top: 145px;
+    }
+  }
