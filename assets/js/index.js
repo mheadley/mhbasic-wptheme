@@ -1406,7 +1406,6 @@ mheadleythemeapp.scrollFades = {
       element.classList.add(transition + "-enter-active");
       element.classList.remove(transition + "-leave-active");
       requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
         element.classList.remove(transition + "-enter-start");
         element.classList.add(transition + "-enter-end"); // Wait until the transition is over...
         setTimeout(function(){
@@ -1415,7 +1414,6 @@ mheadleythemeapp.scrollFades = {
           element.currentTransition = "in";
         }, durationAnim);
         });
-      });
     }
 
     function leaveTransitionEl(element,transition,durationAnim) {
@@ -1424,7 +1422,6 @@ mheadleythemeapp.scrollFades = {
       element.classList.add(transition + "-leave-start");
       element.classList.remove(transition + "-enter-active");
       requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
         element.classList.remove(transition + "-leave-start");
         element.classList.add(transition + "-leave-end");
         setTimeout(function(){
@@ -1433,7 +1430,6 @@ mheadleythemeapp.scrollFades = {
           element.currentTransition = "in";
         }, durationAnim);
         });
-      });
     }
   }
 

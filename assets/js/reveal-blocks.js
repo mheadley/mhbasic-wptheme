@@ -577,6 +577,8 @@
                     { label: 'Right In / No Out', value: 'rightInNoOut' },
                     { label: 'Up In / Down Out', value: 'upInOut' },
                     { label: 'Up In / No Out', value: 'upInNoOut' },
+                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                    { label: 'Grow In / No Out', value: 'growInNoOut' },
                   ],
                   onChange: function (newTr) {
                     props.setAttributes({ boxOnetransition: newTr }) 
@@ -655,6 +657,8 @@
                     { label: 'Right In / No Out', value: 'rightInNoOut' },
                     { label: 'Up In / Down Out', value: 'upInOut' },
                     { label: 'Up In / No Out', value: 'upInNoOut' },
+                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                    { label: 'Grow In / No Out', value: 'growInNoOut' },
                   ],
                   onChange: function (newTr) {
                     props.setAttributes({ boxTwotransition: newTr }) 
@@ -1495,6 +1499,8 @@
                       { label: 'Right In / No Out', value: 'rightInNoOut' },
                       { label: 'Up In / Down Out', value: 'upInOut' },
                       { label: 'Up In / No Out', value: 'upInNoOut' },
+                      { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                      { label: 'Grow In / No Out', value: 'growInNoOut' },
                     ],
                     onChange: function (newTr) {
                       props.setAttributes({ boxTwotransition: newTr }) 

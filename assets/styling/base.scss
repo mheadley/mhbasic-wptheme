@@ -422,12 +422,19 @@ b, strong {
     }
     .bxTr{
       transition: all 0.8s ease-in; 
-      &.fadeInOut, &.fadeInOut{ transition: all 0.7s  cubic-bezier(1,.5,.8,1);}
+      &.fadeInOut, &.fadeInNoOut{ transition: all 0.7s  cubic-bezier(1,.5,.8,1);}
       &.fadeInOut-enter-active, &.fadeInNoOut-enter-active{
         opacity: 1;
       }
       &.fadeInOut-leave-active, &.fadeInNoOut-leave-active{
         opacity: 0;
+      }
+      &.growInNoOut, &.growInSmallOut{ transition: all 0.7s  cubic-bezier(1,.5,.8,1);}
+      &.growInNoOut-enter-active, &.growInSmallOut-enter-active{
+        transform: scale(1);
+      }
+      &.growInNoOut-leave-active, &.growInSmallOut-leave-active{
+        transform: scale(0.5);
       }
       &.linRout, &.leftInNoOut{ transition: all 0.5s ease-in;  }
       &.linRout-enter-active,  &.leftInNoOut-enter-active {

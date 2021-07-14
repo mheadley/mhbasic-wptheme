@@ -570,7 +570,7 @@ b, strong {
   transition: all 0.8s ease-in;
 }
 
-#contentWrapper.block-transitions-enabled .bxTr.fadeInOut, #contentWrapper.block-transitions-enabled .bxTr.fadeInOut {
+#contentWrapper.block-transitions-enabled .bxTr.fadeInOut, #contentWrapper.block-transitions-enabled .bxTr.fadeInNoOut {
   -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
   transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
 }
@@ -581,6 +581,21 @@ b, strong {
 
 #contentWrapper.block-transitions-enabled .bxTr.fadeInOut-leave-active, #contentWrapper.block-transitions-enabled .bxTr.fadeInNoOut-leave-active {
   opacity: 0;
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut {
+  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut-enter-active, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut-enter-active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut-leave-active, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut-leave-active {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
 }
 
 #contentWrapper.block-transitions-enabled .bxTr.linRout, #contentWrapper.block-transitions-enabled .bxTr.leftInNoOut {
