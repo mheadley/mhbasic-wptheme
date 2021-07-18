@@ -232,7 +232,7 @@ function mhbasictheme_register_styles() {
   
 
 ///DEV //////////
-  //wp_enqueue_style('dev', get_template_directory_uri() .'/assets/styling/post.css' );
+  //wp_enqueue_style('dev', get_template_directory_uri() .'/assets/styling/comments.css' );
 
     wp_enqueue_style('responsive', get_template_directory_uri() .'/assets/css/responsive.css' );
       if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -252,7 +252,7 @@ function mhbasictheme_register_styles() {
 
 
     // Add output of Customizer settings as inline style.
-    wp_add_inline_style( 'mhbasictheme-style', mhbasictheme_get_customizer_css( 'front-end' ) );
+    wp_add_inline_style( 'mhbasictheme-style', mhbasictheme_get_customizer_css( 'front-end' ), array('layout', 'responsive', 'mhbasictheme-style' ) );
 
 }
 
@@ -797,7 +797,8 @@ function mhbasictheme_get_elements_array() {
             'text'       => array(
                 'color'            => array( 'body', '.entry-title a', ':root .has-primary-color', '.woocommerce-wrapper .woocommerce-loop-product__title', '.woocommerce .product-name a'),
                 'background-color' => array( ':root .has-primary-background-color' ),
-                'fill'    => array('.post-footer  .post-meta-wrapper svg' ),
+                'fill'    => array('.post-footer .post-meta-wrapper svg *', '.ratings-container .rating-item svg *' ),
+                'stroke'    => array('.ratings-container .rating-item svg *' ),
             ),
             'secondary'  => array(
                 'color'            => array( 'cite', 'figcaption', '.wp-caption-text', '.post-meta', '.entry-content .wp-block-archives li', '.entry-content .wp-block-categories li', '.entry-content .wp-block-latest-posts li', '.wp-block-latest-comments__comment-date', '.wp-block-latest-posts__post-date', '.wp-block-embed figcaption', '.wp-block-image figcaption', '.wp-block-pullquote cite', '.comment-metadata', '.comment-respond .comment-notes', '.comment-respond .logged-in-as', '.pagination .dots', '.entry-content hr:not(.has-background)', 'hr.styled-separator', ':root .has-secondary-color', 'input[type="reset"]', '.woocommerce .woocommerce-breadcrumb',  '.woocommerce .woocommerce-breadcrumb a',  '.woocommerce ul.products li.product .price', '.woocommerce div.product p.price' ),
@@ -1062,7 +1063,7 @@ function post_properties_box_html($post)
 
 
 
-function add_image_insert_override($sizes){
+function mhbasictheme_add_image_insert_override($sizes){
     unset( $sizes['thumbnail']);
     unset( $sizes['medium']);
     unset( $sizes['medium_large']);
@@ -1071,7 +1072,7 @@ function add_image_insert_override($sizes){
     unset( $sizes['2048x2048']);
     return $sizes;
 }
-add_filter('intermediate_image_sizes_advanced', 'add_image_insert_override' );
+add_filter('intermediate_image_sizes_advanced', 'mhbasictheme_add_image_insert_override' );
 
 
 
@@ -1128,3 +1129,89 @@ if ( ! function_exists( 'is_woocommerce_activated' ) ) {
 add_filter('wpo_wcpdf_tmp_path', function( $tmp_base ) {
     return dirname(__FILE__).'/woocommerce-invoices/';
 });
+
+
+add_action( 'comment_form_logged_in_after', 'mhbasictheme_comment_rating_rating_field' );
+add_action( 'comment_form_after_fields', 'mhbasictheme_comment_rating_rating_field' );
+function mhbasictheme_comment_rating_rating_field () {
+    global $post;
+    if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
+	?>
+	<div class="ratings-container interactive-rating">
+        <div class="rating-container-title"> <span>rate <?php echo  $post->post_type ?> <span class="required">*</span></span></div>
+        <div class="ratings-list">
+          <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+                <span class="rating-item"><label for="rating-<?php echo esc_attr( $i ); ?>" title="<?php echo esc_attr( $i ); ?> stars"><input type="radio" id="rating-<?php echo esc_attr( $i ); ?>" name="rating" value="<?php echo esc_attr( $i ); ?>" />
+                <span class="sr-only">  <?php echo esc_html( $i ); ?>	stars</span><span class="star-icon"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span></label></span>
+              <?php endfor; ?>
+              <span class="rating-item no-rating"><label for="rating-0" title="no stars"><input type="radio" id="rating-0" class="star-cb-clear no-rating" name="rating" value="0" /><span class="sr-only"> 0 stars</span></label></span>
+
+          </div>
+    </div>
+	<?php
+    }
+}
+
+//Save the rating submitted by the user.
+add_action( 'comment_post', 'mhbasictheme_comment_rating_save_comment_rating' );
+function mhbasictheme_comment_rating_save_comment_rating( $comment_id ) {
+    if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
+        if ( ( isset( $_POST['rating'] ) ) && ( '' !== $_POST['rating'] ) )
+        $rating = intval( $_POST['rating'] );
+        add_comment_meta( $comment_id, 'rating', $rating );
+    }
+}
+
+//Make the rating required.
+add_filter( 'preprocess_comment', 'mhbasictheme_comment_rating_require_rating' );
+function mhbasictheme_comment_rating_require_rating( $commentdata ) {
+    if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
+        if ( ! is_admin() && ( ! isset( $_POST['rating'] ) || 0 === intval( $_POST['rating'] ) ) )
+        wp_die( __( 'Error: You did not add a rating. Hit the Back button on your Web browser and resubmit your comment with a rating.' ) );
+    }
+	return $commentdata;
+}
+
+function mhbasictheme_get_average_rating( $id ) {
+	$comments = get_approved_comments( $id );
+
+	if ( $comments ) {
+		$i = 0;
+		$total = 0;
+		foreach( $comments as $comment ){
+			$rate = get_comment_meta( $comment->comment_ID, 'rating', true );
+			if( isset( $rate ) && '' !== $rate ) {
+				$i++;
+				$total += $rate;
+			}
+		}
+
+		if ( 0 === $i ) {
+			return false;
+		} else {
+			return array(round( $total / $i, 1 ) . '', $i);
+		}
+	} else {
+		return false;
+	}
+}
+
+function mhbasictheme_show_post_rating($id){
+  $rating = mhbasictheme_get_average_rating($id);
+  $i = 0;
+  if($rating[1] === 0 || !$rating[0] ){
+    return false;
+  }
+  ?>
+  <div class="ratings-container minimal-display">
+        <div class="ratings-list">
+          <?php for ( $i = $rating[0]; $i > 1; $i-- ) : ?>
+                <span class="rating-item"><span class="star-icon"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span></span>
+              <?php endfor; ?>
+              <?php if ($i > 0 ) : ?>
+                <span class="rating-item leftover"><span class="star-icon" style="width: <?php echo 100*$i; ?>%;"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span>
+              <?php endif; ?>
+          </div>
+    </div>
+    <?php
+}

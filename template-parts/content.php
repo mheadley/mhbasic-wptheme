@@ -14,9 +14,15 @@
 ?>
 
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>"  itemscope itemtype="http://schema.org/Article">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>"  
 
+<?php /*if(get_theme_mod( 'comment_or_review', 0 ) > 0 )*/ if (true){ ?>
+itemscope itemtype="http://schema.org/CreativeWorkSeries"
+<?php } else { ?>
+	itemscope itemtype="http://schema.org/CreativeWork"
 	
+<?php } ?> >
+
 
 	<?php get_template_part( 'template-parts/entry-header' ); ?>
 

@@ -666,6 +666,15 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 			return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 		}
 
+
+		public static function sanitize_radio( $input, $setting ) {
+			$input   = sanitize_key( $input );
+			$choices = $setting->manager->get_control( $setting->id )->choices;
+			return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+		}
+
+		
+
 		/**
 		 * Sanitize boolean for checkbox.
 		 *

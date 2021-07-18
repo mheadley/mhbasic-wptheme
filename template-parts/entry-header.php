@@ -26,11 +26,15 @@ if ( is_singular() ) {
    <?php 
    
    $postSubtitle = get_post_meta( get_the_ID(), 'mh_mhbasictheme_post_subtitle', true ); 
+   $postRating =  mhbasictheme_get_average_rating(get_the_ID()); 
 
-   if(get_the_title() != "" || $postSubtitle) {
-     
+   if(get_the_title() != "" || $postSubtitle || $postRating[1] > 0 ) {
+     //echo ($postRating[1]);
      ?>
+
+		
 		<div class="lyt"><div class="txb">
+    <?php mhbasictheme_show_post_rating(get_the_ID()); ?>
 		<?php 
 			if ( is_singular() ) {
 			the_title( '<h1 class="entry-title" itemprop="name">', '</h1>' );
@@ -38,6 +42,7 @@ if ( is_singular() ) {
 			the_title( '<h3 class="entry-title heading-size-1" itemprop="name"><a href="' . esc_url( get_permalink() ) . '" itemprop="url">', '</a></h3>' );
       }
     ?>
+
     <?php 
      
       if($postSubtitle){
@@ -48,6 +53,8 @@ if ( is_singular() ) {
 	
 
       ?>
+
+
     </div></div>
     
     <?php } ?>
@@ -79,7 +86,7 @@ if ( is_singular() ) {
     <?php
     }
     ?>
- 
+
 <?php
     if(false){
 		//if ( has_excerpt() && is_singular() ) {
@@ -149,6 +156,16 @@ if ( true === $show_categories && has_category()) {
     <meta itemprop="height" content="250">
   </span>  
 </span>
+  <?php $posttags = get_the_tags();
+  $tagString = '';
+  if ($posttags) {
+    foreach($posttags as $tag) {
+      $tagString = $tagString . ", " . $tag->name;  
+    }
+  }
+  ?>
+  <meta itemprop="keywords" content="<?php if($tagString != ''){echo substr($tagString, 2);}?>">
+
 </div>
 
 

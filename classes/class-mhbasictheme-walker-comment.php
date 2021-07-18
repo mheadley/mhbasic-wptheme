@@ -34,7 +34,13 @@ if ( ! class_exists( 'mhbasictheme_Walker_Comment' ) ) {
 
 			?>
 			<<?php echo $tag; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?>>
-				<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+				<article id="div-comment-<?php comment_ID(); ?>" class="comment-body"
+				<?php 	if ( $rating = get_comment_meta( get_comment_ID(), 'rating', true ) ) { ?> 
+					itemprop="review" itemscope itemtype="https://schema.org/Review"
+					<?php } else {?>
+						itemprop="comment" itemscope itemtype="https://schema.org/Comment"
+			<?php	} ?>
+				> 
 					<footer class="comment-meta">
 						<div class="comment-author vcard">
 							<?php
@@ -51,7 +57,7 @@ if ( ! class_exists( 'mhbasictheme_Walker_Comment' ) ) {
 							}
 
 							printf(
-								'<span class="fn">%1$s</span><span class="screen-reader-text says">%2$s</span>',
+								'<span class="fn" itemprop="author">%1$s</span><span class="screen-reader-text says">%2$s</span>',
 								esc_html( $comment_author ),
 								__( 'says:', 'mhbasictheme' )
 							);
@@ -68,7 +74,7 @@ if ( ! class_exists( 'mhbasictheme_Walker_Comment' ) ) {
 								/* Translators: 1 = comment date, 2 = comment time */
 								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'mhbasictheme' ), get_comment_date( '', $comment ), get_comment_time() );
 								?>
-								<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo esc_attr( $comment_timestamp ); ?>">
+								<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo esc_attr( $comment_timestamp ); ?>"  itemprop="datePublished">
 									<?php echo esc_html( $comment_timestamp ); ?>
 								</time>
 							</a>
@@ -80,8 +86,34 @@ if ( ! class_exists( 'mhbasictheme_Walker_Comment' ) ) {
 						</div><!-- .comment-metadata -->
 
 					</footer><!-- .comment-meta -->
+				<?php
 
-					<div class="comment-content entry-content">
+				if ( $rating = get_comment_meta( get_comment_ID(), 'rating', true ) ) {
+						?>
+				<div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+      		<meta itemprop="worstRating" content = "0">
+      		<meta itemprop="ratingValue" content="<?php echo $rating; ?>" >
+      		<meta itemprop="BestRating" content = "5">
+    		</div>
+				<div class="ratings-container">
+					<div class="ratings-list">
+					<?php for ( $i = 1; $i <= $rating; $i++ ) : ?>
+						<span class="rating-item"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span>
+						<?php endfor; ?>
+				</div>
+				</div>
+
+
+<?php
+				}
+
+				?>
+					<div class="comment-content entry-content" 
+					<?php 	if ( $rating = get_comment_meta( get_comment_ID(), 'rating', true ) ) { ?> 
+						itemprop="reviewBody" 
+					<?php } else {?>
+						itemprop="text"
+			<?php	} ?>>
 
 						<?php
 

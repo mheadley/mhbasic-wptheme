@@ -6,13 +6,26 @@ function mhbasictheme_slug_sanitize_checkbox( $checked ) {
 }
 
 
+function mhbasictheme_slug_sanitize_radio( $input, $setting ) {
+	$input   = sanitize_key( $input );
+	$choices = $setting->manager->get_control( $setting->id )->choices;
+	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+}
+
+
+
 function mhbasictheme_customize_register( $wp_customize ) {
   // Do stuff with $wp_customize, the WP_Customize_Manager object.
 
   $wp_customize->add_section( 'hmpCover' , array(
 	'title'    => __( 'Homepage Feature', 'mhbasictheme' ),
 	'priority' => 0
-) );   
+	) );   
+
+	$wp_customize->add_section( 'schemaOptions' , array(
+		'title'    => __( 'Schema Settings', 'mhbasictheme' ),
+		'priority' => 2
+		) );  
 
 
 $wp_customize->add_setting(
@@ -32,6 +45,31 @@ $wp_customize->add_control(
 		'section'  => 'hmpCover',
 		'label'    => esc_html__(  'Show Homepage Feature', 'mhbasictheme' ),
 	)
+);
+
+
+
+$wp_customize->add_setting(
+	'comment_or_review',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => true,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'comment_or_review',
+	array(
+		'type' => 'radio',
+		'section' => 'schemaOptions', // Add a default or your own section
+		'label' => __( 'Comment or Review' ),
+		'description' => __( 'This is to decide if your comment schema is a review' ),
+		'choices' => array(
+			0 => __( 'Comment' ),
+			1 => __( 'Review' ),
+	))
 );
 
 

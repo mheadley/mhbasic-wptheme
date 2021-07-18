@@ -409,8 +409,8 @@ function mhbasictheme_get_post_meta( $post_id = null, $location = 'single-top' )
 							<span class="screen-reader-text"><?php _e( 'Tags', 'mhbasictheme' ); ?></span>
 							<?php mhbasictheme_the_theme_svg( 'tag' ); ?>
 						</span>
-						<span class="meta-text" itemprop="keywords">
-							<?php the_tags( '<span itemprop="text">', '</span>, <span itemprop="text">', '</span>' ); ?>
+						<span class="meta-text">
+							<?php the_tags( '<span>', '</span>, <span>', '</span>' ); ?>
 						</span>
 					</li>
 					<?php

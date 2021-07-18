@@ -376,6 +376,50 @@ mheadleythemeapp.primaryMenu = {
 	}
 }; // mheadleythemeapp.primaryMenu
 
+
+
+
+/*	-----------------------------------------------------------------------------------------------
+	Comments and Ratings
+--------------------------------------------------------------------------------------------------- */
+
+mheadleythemeapp.commentRating = {
+
+	init: function() {
+		this.starClicks();
+	},
+
+	// The focusMenuWithChildren() function implements Keyboard Navigation in the Primary Menu
+	// by adding the '.focus' class to all 'li.menu-item-has-children' when the focus is on the 'a' element.
+	starClicks: function() {
+		// Get all the link elements within the primary menu.
+		var star, i, len,
+			ratingList = document.querySelector( '.ratings-container.interactive-rating .ratings-list' );
+
+		if ( ! ratingList ) {
+			return false;
+		}
+
+		star = ratingList.getElementsByTagName( 'input' );
+
+		// Each time a menu link is focused or blurred, toggle focus.
+		for ( i = 0, len = star.length; i < len; i++ ) {
+			star[i].addEventListener( 'change', setStarClass, true );
+		}
+
+		//Sets or removes the .focus class on an element.
+		function setStarClass(e) {
+			var self = this;
+      console.log(e);
+      if(!e.target){
+        return false;
+      }
+      ratingList.setAttribute("class", "ratings-list selected-rating-"+e.target.value);
+		}
+	}
+}; // mheadleythemeapp.comments
+
+
 /*	-----------------------------------------------------------------------------------------------
 	Toggles
 --------------------------------------------------------------------------------------------------- */
@@ -1406,6 +1450,7 @@ mheadleythemeapp.scrollFades = {
       element.classList.add(transition + "-enter-active");
       element.classList.remove(transition + "-leave-active");
       requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
         element.classList.remove(transition + "-enter-start");
         element.classList.add(transition + "-enter-end"); // Wait until the transition is over...
         setTimeout(function(){
@@ -1414,6 +1459,7 @@ mheadleythemeapp.scrollFades = {
           element.currentTransition = "in";
         }, durationAnim);
         });
+      });
     }
 
     function leaveTransitionEl(element,transition,durationAnim) {
@@ -1422,6 +1468,7 @@ mheadleythemeapp.scrollFades = {
       element.classList.add(transition + "-leave-start");
       element.classList.remove(transition + "-enter-active");
       requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
         element.classList.remove(transition + "-leave-start");
         element.classList.add(transition + "-leave-end");
         setTimeout(function(){
@@ -1430,6 +1477,7 @@ mheadleythemeapp.scrollFades = {
           element.currentTransition = "in";
         }, durationAnim);
         });
+      });
     }
   }
 
@@ -1525,6 +1573,7 @@ mheadleythemeappDomReady( function() {
 	mheadleythemeapp.coverModals.init();	// Handle cover modals
 	mheadleythemeapp.intrinsicRatioVideos.init();	// Retain aspect ratio of videos on window resize
 	mheadleythemeapp.primaryMenu.init();	// Primary Menu
+	mheadleythemeapp.commentRating.init();	// Comments
   mheadleythemeapp.touchEnabled.init();	// Add class to body if device is touch-enabled
   mheadleythemeapp.scrollReactor.init(); // adds scroll reactions and parallax effects
   mheadleythemeapp.scrollSegment.init(); //segment declarations and adding funtionality

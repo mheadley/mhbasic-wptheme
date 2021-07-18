@@ -66,6 +66,7 @@ if(get_theme_mod( 'post_archive_scroll_effect', "none" ) == "alternating"){
 		
 		?></span>
 			<?php  the_title( '<h3 class="entry-title heading-size-3" itemprop="name"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' ); ?>
+			<?php mhbasictheme_show_post_rating(get_the_ID()) ?>
       <div class="post-excerpt">
       <?php
       if(has_excerpt()){
