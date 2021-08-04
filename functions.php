@@ -365,13 +365,13 @@ function mhbasictheme_get_custom_logo( $html ) {
             );
 
             // Add a style attribute with the height, or append the height to the style attribute if the style attribute already exists.
-            if ( strpos( $html, ' style=' ) === false ) {
-                $search[]  = '/(src=)/';
-                $replace[] = "style=\"height: {$logo_height}px; width: auto;\" src=";
-            } else {
-                $search[]  = '/(style="[^"]*)/';
-                $replace[] = "$1 height: {$logo_height}px; width: auto;";
-            }
+            // if ( strpos( $html, ' style=' ) === false ) {
+            //     $search[]  = '/(src=)/';
+            //     $replace[] = "style=\"height: {$logo_height}px; width: auto;\" src=";
+            // } else {
+            //     $search[]  = '/(style="[^"]*)/';
+            //     $replace[] = "$1 height: {$logo_height}px; width: auto;";
+            // }
 
             $html = preg_replace( $search, $replace, $html );
 
