@@ -9,28 +9,7 @@ Default theme for 2020.
 
 == Description ==
 
-Our default theme for 2020 is designed to take full advantage of the 
-flexibility of the block editor. Organizations and businesses have the 
-ability to create dynamic landing pages with endless layouts using the 
-group and column blocks. The centered content column and fine-tuned 
-typography also makes it perfect for traditional blogs. Complete editor 
-styles give you a good idea of what your content will look like, even 
-before you publish. You can give your site a personal touch by changing 
-the background colors and the accent color in the Customizer. The colors of 
-all elements on your site are automatically calculated based on the colors 
-you pick, ensuring a high, accessible color contrast for your visitors.
-
-== Changelog ==
-
-= 1.1 =
-* Released: December 12, 2019
-
-https://wordpress.org/support/article/twenty-twenty-changelog/
-
-= 1.0 =
-* Released: November 12, 2019
-
-Initial release
+This is a block based theme that leverages customizations, built in schema, and ratings
 
 == Copyright ==
 
@@ -52,47 +31,9 @@ Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
 
 Mheadley Basic bundles the following third-party resources:
 
-Illustrations in screenshot.png by Tammie Lister
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/  
-
-Inter Font
-Copyright (c) 2016-2019 The Inter Project Authors (me@rsms.me)
-License: SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
-Source: https://rsms.me/inter/
-
-Bespoke Icons Created For Mheadley Basic
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
-List of bespoke icons:
-- Search icon
-- Menu icon
-
-Feather Icons
-Copyright (c) 2013-2017 Cole Bemis
-License: MIT License, https://opensource.org/licenses/MIT
-Source: https://feathericons.com
-Used for post meta icons, and the link icon in the social menu.
-
-Social Icons
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Source: WordPress Social Link Block (See wp-includes\blocks\social-link.php)
-
-Code from Twenty Nineteen
-Copyright (c) 2018-2019 WordPress.org
-License: GPLv2
-Source: https://wordpress.org/themes/twentynineteen/
-Included as part of the following classes and functions:
-- mhbasictheme_SVG_Icons
-- mhbasictheme_the_theme_svg()
-- mhbasictheme_get_theme_svg()
-- mhbasictheme_nav_menu_social_icons()
 
 Code from Twenty Seventeen
 Copyright (c) 2016-2019 WordPress.org
 License: GPLv2
 Source: https://wordpress.org/themes/twentyseventeen/
 Included as part of the following classes and functions:
-- mhbasictheme_unique_id()
-
-Underscores 
-https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)

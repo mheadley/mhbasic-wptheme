@@ -426,11 +426,6 @@
   min-width: 320px;
 }
 
-.post-part-container .post-part-media.video .mgb video:focus {
-  outline: 0;
-  outline: none;
-}
-
 .post-part-container .post-part-media.video .mgb figure {
   background-color: #000000;
 }

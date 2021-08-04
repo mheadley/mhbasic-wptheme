@@ -53,7 +53,7 @@ $wp_customize->add_setting(
 	'comment_or_review',
 	array(
 		'capability'        => 'edit_theme_options',
-		'default'           => true,
+		'default'           => 0,
 		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
 		'transport' => 'refresh' // or postMessage,
 	)
@@ -73,6 +73,26 @@ $wp_customize->add_control(
 );
 
 
+
+
+$wp_customize->add_setting( 'rating_mini_text', array(
+	'type' => 'theme_mod', // or 'option'
+	'capability' => 'edit_theme_options',
+	'default'           => 0,
+	'transport' => 'refresh' // or postMessage,
+  ) );
+
+$wp_customize->add_control('rating_mini_text', array(
+  'label'   => 'Ratings Text?',
+   'section' => 'schemaOptions',
+   'type'    => 'select',
+	 'description' => __( 'Show rating text in minimal display of ratings?' ),
+   'choices' => array(
+       0 => 'Show Stars only',
+       1 => 'Show rating value',
+       2 => 'Show rating value and text',
+   )
+ ));
 
 //   $wp_customize->add_setting( 'accentColor', array(
 // 	'type' => 'theme_mod', // or 'option'

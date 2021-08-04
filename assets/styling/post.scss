@@ -287,10 +287,11 @@
       }
       video{
         max-width: 100% !important; height: auto; width: 100% !important; max-height: 500px;  min-width: 320px;     
-        &:focus{
-          outline: 0;
-          outline: none;
-        }
+        // &:focus{
+        //   outline: 0;
+        //   outline: none;
+        // }
+        //accessible note removed
       }
       figure{
         background-color: #000000;

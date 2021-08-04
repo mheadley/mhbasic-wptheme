@@ -191,11 +191,6 @@ button, html input[type=button] {
   cursor: pointer;
 }
 
-input {
-  outline: 0;
-  outline: none;
-}
-
 input[type=reset], input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
@@ -1031,6 +1026,11 @@ b, strong {
   word-break: normal;
 }
 
+.ratings-container .rating-item input:focus + span {
+  outline: 1;
+  outline: thin dotted;
+}
+
 .ratings-container .rating-item.no-rating {
   margin-left: 30px;
 }
@@ -1051,6 +1051,15 @@ b, strong {
 
 .ratings-container.minimal-display .rating-item svg * {
   fill-opacity: 100;
+}
+
+.ratings-container.minimal-display .rating-text-container {
+  font-size: 2.3rem;
+}
+
+.ratings-container.minimal-display .rating-text-container .measure::before {
+  content: " ";
+  display: inline-block;
 }
 
 .ratings-container.interactive-rating .rating-item {
@@ -1497,11 +1506,6 @@ b, strong {
   width: 100% !important;
   max-height: 500px;
   min-width: 320px;
-}
-
-.post-part-container .post-part-media.video .mgb video:focus {
-  outline: 0;
-  outline: none;
 }
 
 .post-part-container .post-part-media.video .mgb figure {

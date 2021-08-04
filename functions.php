@@ -826,7 +826,7 @@ function mhbasictheme_get_elements_array() {
                 'background-color'    => array( 'body:not(.overlay-header) .primary-menu ul' ),
                 'border-bottom-color' => array( 'body:not(.overlay-header) .primary-menu > li > ul:after' ),
                 'border-left-color'   => array( 'body:not(.overlay-header) .primary-menu ul ul:after' ),
-                'fill'    => array('.entry-header .post-meta svg' ),
+                'fill'    => array('.entry-header .post-meta svg *' ),
             ),
             'secondary'  => array(
                 'color' => array( '.site-description', 'body:not(.overlay-header) .toggle-inner .toggle-text', '.widget .post-date', '.widget .rss-date', '.widget_archive li', '.widget_categories li', '.widget cite', '.widget_pages li', '.widget_meta li', '.widget_nav_menu li', '.singular .entry-header .post-meta', '.singular:not(.overlay-header) .entry-header .post-meta a' ),
@@ -847,7 +847,7 @@ function mhbasictheme_get_elements_array() {
             ),
             'text'       => array(
                 'color'               => array(  '.footer-nav-widgets-wrapper .widget-title', '.footer-nav-widgets-wrapper .widget-title a',  '.footer-nav-widgets-wrapper .widget-content', '#footerWrapper .footer-copyright'),
-                'fill'    => array('.footer-nav-widgets-wrapper .footer-social-wrapper svg'  ),
+                'fill'    => array('.footer-nav-widgets-wrapper .footer-social-wrapper svg *'  ),
                 'border-bottom-color' => array( ),
                 'border-left-color'   => array( ),
             ),
@@ -863,7 +863,7 @@ function mhbasictheme_get_elements_array() {
             'accent'     => array(
                 'color'               => array('#headerWrapper',  '#headerWrapper .header-navigation-wrapper a:hover'  ),
                 'background-color' => array( '' ),
-                'fill'   => array( '#headerWrapper .header-right svg:hover', '#mobileMenuToggle svg:hover')
+                'fill'   => array( '#headerWrapper .header-right svg *:hover', '#mobileMenuToggle svg *:hover')
             ),
             'background' => array(
                 'color'            => array( '' ),
@@ -874,7 +874,7 @@ function mhbasictheme_get_elements_array() {
                 'background-color'    => array( ),
                 'border-bottom-color' => array( ),
                 'border-left-color'   => array( ),
-                'fill'   => array( '#headerWrapper .header-right svg', '#mobileMenuToggle svg')
+                'fill'   => array( '#headerWrapper .header-right svg *', '#mobileMenuToggle svg *')
             ),
             'secondary'  => array(
                 'color' => array(  '#headerWrapper .secondary','#headerWrapper .header-navigation-wrapper .current-menu-item a' ,'#headerWrapper .em'),
@@ -903,13 +903,24 @@ function mhbasictheme_get_elements_array() {
     // automatically load dependencies and version
    // $asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
  
-
+    if ( defined( 'UPLOADS' ) ) {
+      $upload_dir_name = "/wp-content/" . UPLOADS;
+    } else{
+      $upload_dir_name = '/wp-content/uploads';
+    }
     wp_register_script(
       'mhbasictheme-layout-revealing-blocks',
       get_template_directory_uri() .'/assets/js/reveal-blocks.js',
-      array( 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ),
+      array( 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor'),
       true
     );
+    wp_add_inline_script( 'mhbasictheme-layout-revealing-blocks', 'const BLOGINFO = ' . json_encode( array(
+        'ajaxUrl' => explode("://", admin_url( 'admin-ajax.php' ))[1],
+        'blogUrl' => explode("://", get_site_url())[1],
+        'templateUrl' => explode("://", get_stylesheet_directory_uri())[1],
+        'uploadPath' => $upload_dir_name,
+        'uploadURL' => explode("://", (get_site_url() . $upload_dir_name))[1]
+    ) ), 'before' );
 
     register_block_type( 'mhbasictheme-layout/revealing-blocks', array(
       'editor_script' => 'mhbasictheme-layout-revealing-blocks',
@@ -1138,13 +1149,16 @@ function mhbasictheme_comment_rating_rating_field () {
     if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
 	?>
 	<div class="ratings-container interactive-rating">
-        <div class="rating-container-title"> <span>rate <?php echo  $post->post_type ?> <span class="required">*</span></span></div>
+        <div class="rating-container-title"> <span>Rate <?php echo  $post->post_type ?> <span class="required">*</span></span></div>
         <div class="ratings-list">
           <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-                <span class="rating-item"><label for="rating-<?php echo esc_attr( $i ); ?>" title="<?php echo esc_attr( $i ); ?> stars"><input type="radio" id="rating-<?php echo esc_attr( $i ); ?>" name="rating" value="<?php echo esc_attr( $i ); ?>" />
-                <span class="sr-only">  <?php echo esc_html( $i ); ?>	stars</span><span class="star-icon"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span></label></span>
+                <span class="rating-item"><label for="rating-<?php echo esc_attr( $i ); ?>" title="<?php echo esc_attr( $i ); ?> stars"><input type="radio" id="rating-<?php echo esc_attr( $i ); ?>" name="rating" value="<?php echo esc_attr( $i ); ?>" tabindex="0" />
+                <span class="star-icon"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span>
+                <span class="sr-only">  <?php echo esc_html( $i ); ?>	stars</span>
+                </label>
+                </span>
               <?php endfor; ?>
-              <span class="rating-item no-rating"><label for="rating-0" title="no stars"><input type="radio" id="rating-0" class="star-cb-clear no-rating" name="rating" value="0" /><span class="sr-only"> 0 stars</span></label></span>
+              <span class="rating-item no-rating"><label for="rating-0" title="no stars"><input type="radio" id="rating-0" class="star-cb-clear no-rating" name="rating" value="0" tabindex="-1" /><span class="sr-only"> 0 stars</span></label></span>
 
           </div>
     </div>
@@ -1209,8 +1223,15 @@ function mhbasictheme_show_post_rating($id){
                 <span class="rating-item"><span class="star-icon"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span></span>
               <?php endfor; ?>
               <?php if ($i > 0 ) : ?>
-                <span class="rating-item leftover"><span class="star-icon" style="width: <?php echo 100*$i; ?>%;"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span>
+                <span class="rating-item leftover"><span class="star-icon" style="width: <?php echo 100*$i; ?>%;"><?php mhbasictheme_the_theme_svg( 'star-outline' ); ?></span></span>
               <?php endif; ?>
+              <?php   if(get_theme_mod( 'rating_mini_text', 0 ) > 0 ){ ?>
+              <span class="rating-text-container"> <span class="num"><?php echo $rating[0]; ?></span>
+              <?php   if(get_theme_mod( 'rating_mini_text', 0 ) > 1 ){ ?>
+                <span class="measure">stars</span>
+                <?php } ?></span>
+
+              <?php } ?>
           </div>
     </div>
     <?php
