@@ -10,7 +10,7 @@
 $next_post = get_next_post();
 $prev_post = get_previous_post();
 
-if ( $next_post || $prev_post ) {
+if ( ($next_post || $prev_post)  && (bool) get_theme_mod( 'show_page_navigation', true ) ) {
 
 	$pagination_classes = '';
 

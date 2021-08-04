@@ -324,4 +324,25 @@ div.comment:first-of-type {
 .comments .comment-reply-title, .comments span.fn {
   font-weight: 700;
 }
+
+.comments-wrapper .ratings-container {
+  padding-bottom: 20px;
+}
+
+.comments-wrapper .ratings-container .ratings-list {
+  padding-bottom: 10px;
+}
+
+.comments-wrapper .comment-body .rating-item {
+  width: 19px;
+  margin-right: 2px;
+}
+
+.comments-wrapper .comment-body .rating-item svg * {
+  fill-opacity: 100;
+}
+
+.comments-wrapper .comment-body .rating-item svg {
+  max-width: 100%;
+}
 /*# sourceMappingURL=comments.css.map */

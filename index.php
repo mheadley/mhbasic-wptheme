@@ -143,16 +143,14 @@ else {
 
 		<?php
 	}
-
+	$MHBASICTHEME_post_idx = -1;
 	if ( have_posts() ) {
 
-		$i = 0;
+
 
 		while ( have_posts() ) {
-			$i++;
-			// if ( $i > 1 ) {
-			// 	echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
-			// }
+			$MHBASICTHEME_post_idx++;
+		
 			the_post();
       if(( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) || is_home() || is_archive() ){
         

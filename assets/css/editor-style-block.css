@@ -192,11 +192,6 @@ button, html input[type=button] {
   cursor: pointer;
 }
 
-input {
-  outline: 0;
-  outline: none;
-}
-
 input[type=reset], input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;

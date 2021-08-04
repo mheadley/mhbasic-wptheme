@@ -404,13 +404,13 @@ function mhbasictheme_get_post_meta( $post_id = null, $location = 'single-top' )
 
 					$has_meta = true;
 					?>
-					<li class="post-tags meta-wrapper">
+					<li class="post-tags meta-wrapper" >
 						<span class="meta-icon">
 							<span class="screen-reader-text"><?php _e( 'Tags', 'mhbasictheme' ); ?></span>
 							<?php mhbasictheme_the_theme_svg( 'tag' ); ?>
 						</span>
 						<span class="meta-text">
-							<?php the_tags( '', ', ', '' ); ?>
+							<?php the_tags( '<span>', '</span>, <span>', '</span>' ); ?>
 						</span>
 					</li>
 					<?php

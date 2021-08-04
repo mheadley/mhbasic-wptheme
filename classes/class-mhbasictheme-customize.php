@@ -388,7 +388,33 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 			);
 
 
+			
 
+
+
+			/* Show page nav bio ---------------------------------------------------- */
+
+			$wp_customize->add_setting(
+				'show_page_navigation',
+				array(
+					'capability'        => 'edit_theme_options',
+					'default'           => true,
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+				)
+			);
+
+			$wp_customize->add_control(
+				'show_page_navigation',
+				array(
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show Bottom Page Navigation', 'mhbasictheme' ),
+				)
+			);
+
+
+			
 
 			$wp_customize->add_setting( 'section_row_padding', array(
 				'type' => 'theme_mod', // or 'option'
@@ -430,7 +456,34 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 				)
 			);
 
+			$wp_customize->add_setting( 'post_archive_scroll_effect', array(
+				'type' => 'theme_mod', // or 'option'
+				'capability' => 'edit_theme_options',
+				'default'  => 'none',
+				'transport' => 'refresh' // or postMessage,
+			) );
 
+			$wp_customize->add_control('post_archive_scroll_effect', array(
+			'label'   => 'Effect for Post archives',
+			'section' => 'options',
+			'type'    => 'select',
+			'choices' => array(
+				'none' => 'No Effect',
+				'alternating' => 'Alternating Left/Right',
+				'fadeInOut' => 'Fade In/Out',
+				'fadeInNoOut' => 'Fade In/ No Out',
+				'dinUpOut' => 'Down In / Up Out',
+				'downInNoOut' => 'Down In / No Out',
+				'linRout' => 'Left In/ Right Out',
+				'leftInNoOut' => 'Left In / No Out',
+				'rightInOut' => 'Right In / Left Out',
+				'rightInNoOut' => 'Right In / No Out',
+				'upInOut' => 'Up In / Down Out',
+				'upInNoOut' => 'Up In / No Out',
+				'growInSmallOut' => 'Grow In / Shrink Out',
+				'growInNoOut' => 'Grow In / No Out',
+			)
+			));
 
 			/* Display full content or excerpts on the blog and archives --------- */
 
@@ -612,6 +665,15 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 			$choices = $setting->manager->get_control( $setting->id )->choices;
 			return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 		}
+
+
+		public static function sanitize_radio( $input, $setting ) {
+			$input   = sanitize_key( $input );
+			$choices = $setting->manager->get_control( $setting->id )->choices;
+			return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+		}
+
+		
 
 		/**
 		 * Sanitize boolean for checkbox.

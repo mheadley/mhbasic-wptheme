@@ -193,7 +193,7 @@ button, html input[type=button] {
 }
 
 input {
-outline: 0; outline: none;
+//outline: 0; outline: none;
   &[type=reset], &[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;

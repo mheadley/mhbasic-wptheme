@@ -17,8 +17,16 @@
       color: '#fff',
       padding: '20px',
   };
-  const REVEAL_ALLOWED_BLOCKS = [  'core/paragraph',  'core/gallery', 'core/pullquote', 'core/file',  'core/button', 'core/list', 'core/heading','core/table'];
+  const REVEAL_ALLOWED_BLOCKS = [  'core/paragraph',  'core/gallery', 'core/pullquote', 'core/file', 'core/html',  'core/button', 'core/list', 'core/heading','core/table'];
 
+  function makeImageRelative(url){
+    urlFrags = url.split("://");
+    if(urlFrags[1].indexOf(BLOGINFO.uploadURL) === 0){
+      return urlFrags[1].replace(BLOGINFO.blogUrl, "");
+    } else{
+      return urlFrags.join("://");
+    }
+  }
 
   function addListBlockParent( settings, name ) {
     //if(name === "mhbasictheme-layout/reveal-block"){ return settings;}
@@ -291,7 +299,7 @@
         }
      
         return props.setAttributes({
-          mediaURL: mediaUrl,
+          mediaURL: makeImageRelative(mediaUrl),
           mediaID: media.id,
           mediaSizes: media.sizes ? media.sizes : null,
           mediaAlt: media.alt,
@@ -313,9 +321,8 @@
             mediaUrl = media.sizes['full'] ['url'];
           }
         }
-
         return props.setAttributes({
-          media2URL: mediaUrl,
+          media2URL: makeImageRelative(mediaUrl),
           media2ID: media.id,
           media2Alt: media.alt,
           media2Sizes: media.sizes ? media.sizes : null,
@@ -329,7 +336,7 @@
       }
 
       var onSelectPoster = function(media) {
-        props.setAttributes({mediaPosterURL: media.url});
+        props.setAttributes({mediaPosterURL: makeImageRelative(media.url)});
       }
       changeMediaLocation = function(type){
         if(type === 0){
@@ -577,6 +584,8 @@
                     { label: 'Right In / No Out', value: 'rightInNoOut' },
                     { label: 'Up In / Down Out', value: 'upInOut' },
                     { label: 'Up In / No Out', value: 'upInNoOut' },
+                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                    { label: 'Grow In / No Out', value: 'growInNoOut' },
                   ],
                   onChange: function (newTr) {
                     props.setAttributes({ boxOnetransition: newTr }) 
@@ -655,6 +664,8 @@
                     { label: 'Right In / No Out', value: 'rightInNoOut' },
                     { label: 'Up In / Down Out', value: 'upInOut' },
                     { label: 'Up In / No Out', value: 'upInNoOut' },
+                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                    { label: 'Grow In / No Out', value: 'growInNoOut' },
                   ],
                   onChange: function (newTr) {
                     props.setAttributes({ boxTwotransition: newTr }) 
@@ -1027,7 +1038,6 @@
                 }),
 
                 attributes.body != "" && el('meta', {
-                  tagName: 'meta',
                   itemprop: "description",
                   content: (function(){ 
                     var stringIt = "";
@@ -1238,7 +1248,7 @@
           }
 
           return props.setAttributes({
-            mediaURL: mediaUrl,
+            mediaURL: makeImageRelative(mediaUrl),
             mediaID: media.id,
             mediaAlt: media.alt,
             mediaSizes: media.sizes ? media.sizes : null,
@@ -1495,6 +1505,8 @@
                       { label: 'Right In / No Out', value: 'rightInNoOut' },
                       { label: 'Up In / Down Out', value: 'upInOut' },
                       { label: 'Up In / No Out', value: 'upInNoOut' },
+                      { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+                      { label: 'Grow In / No Out', value: 'growInNoOut' },
                     ],
                     onChange: function (newTr) {
                       props.setAttributes({ boxTwotransition: newTr }) 

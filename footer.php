@@ -36,7 +36,7 @@
         <div id="footerWrapper" >
           <footer>
             <div class="content-wrap">
-<?php  if(has_nav_menu( 'footer' )){ ?> <div class="footer-links"><?php wp_nav_menu( array( 'menu_id' => '', 'container' => '', 'theme_location' => 'footer', 'items_wrap' => '%3$s') );  ?>  </div> <?php }?>
+<?php  if(has_nav_menu( 'footer' )){ ?> <div class="footer-links"><?php wp_nav_menu( array( 'menu_id' => '', 'container' => 'ul', 'theme_location' => 'footer', 'items_wrap' => '<ul>%3$s</ul>') );  ?>  </div> <?php }?>
               <div class="footer-copyright">&copy; copyright <?php echo date("Y"); ?> <?php echo bloginfo("name"); ?>
                all rights reserved.<span style="opacity: 0.7; display: block; font-size: 90%; font-weight: 400; padding-top: 10px; text-decoration: none;">theme designed by <a href="https://mheadley.com" target="_blank" style="color: inherit; text-decoration: none;">mheadley inc.</a></span></div>
               
@@ -45,6 +45,7 @@
         </div>
       </div>
        </div>
+</div>
 </div>
 </div>
        <?php wp_footer() ?>

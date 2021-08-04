@@ -1,5 +1,26 @@
 # Change Log
 
+## [1.5.8] - 2021-08-04
+
+**Implemented enhancements:**
+
+- make image paths relative
+
+
+
+## [1.5.7] - 2021-07-18
+
+**Implemented enhancements:**
+
+- add review schema
+- add schema for ratings
+- add keywords to schema
+- changed to creative work series
+
+**Fixed bugs:**
+- css on svgs not filling
+- some svgs not showing up properly
+
 
 ## [1.5.5] - 2020-12-17
 

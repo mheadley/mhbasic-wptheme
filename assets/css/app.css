@@ -191,11 +191,6 @@ button, html input[type=button] {
   cursor: pointer;
 }
 
-input {
-  outline: 0;
-  outline: none;
-}
-
 input[type=reset], input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
@@ -399,7 +394,6 @@ b, strong {
   left: 0;
   top: 0;
   display: block;
-  background-color: #ffffff;
   -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
   transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
 }
@@ -688,7 +682,7 @@ b, strong {
   position: absolute;
 }
 
-.screen-reader-text {
+.screen-reader-text, .sr-only {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(50%);
@@ -824,7 +818,7 @@ b, strong {
   transition: all 0.8s ease-in;
 }
 
-#contentWrapper.block-transitions-enabled .bxTr.fadeInOut, #contentWrapper.block-transitions-enabled .bxTr.fadeInOut {
+#contentWrapper.block-transitions-enabled .bxTr.fadeInOut, #contentWrapper.block-transitions-enabled .bxTr.fadeInNoOut {
   -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
   transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
 }
@@ -835,6 +829,21 @@ b, strong {
 
 #contentWrapper.block-transitions-enabled .bxTr.fadeInOut-leave-active, #contentWrapper.block-transitions-enabled .bxTr.fadeInNoOut-leave-active {
   opacity: 0;
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut {
+  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut-enter-active, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut-enter-active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#contentWrapper.block-transitions-enabled .bxTr.growInNoOut-leave-active, #contentWrapper.block-transitions-enabled .bxTr.growInSmallOut-leave-active {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
 }
 
 #contentWrapper.block-transitions-enabled .bxTr.linRout, #contentWrapper.block-transitions-enabled .bxTr.leftInNoOut {
@@ -943,6 +952,122 @@ b, strong {
 
 .to-the-top .to-the-top-long {
   display: none;
+}
+
+.ratings-container {
+  display: block;
+  font-size: 0rem;
+}
+
+.ratings-container .rating-container-title {
+  display: block;
+}
+
+.ratings-container .rating-container-title span {
+  font-size: 2rem;
+}
+
+.ratings-container .ratings-list {
+  display: block;
+}
+
+.ratings-container .ratings-list.selected-rating-1 .rating-item:nth-of-type(1) svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container .ratings-list.selected-rating-2 .rating-item:nth-of-type(1) svg *,
+.ratings-container .ratings-list.selected-rating-2 .rating-item:nth-of-type(2) svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container .ratings-list.selected-rating-3 .rating-item:nth-of-type(1) svg *,
+.ratings-container .ratings-list.selected-rating-3 .rating-item:nth-of-type(2) svg *,
+.ratings-container .ratings-list.selected-rating-3 .rating-item:nth-of-type(3) svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container .ratings-list.selected-rating-4 .rating-item:nth-of-type(1) svg *,
+.ratings-container .ratings-list.selected-rating-4 .rating-item:nth-of-type(2) svg *,
+.ratings-container .ratings-list.selected-rating-4 .rating-item:nth-of-type(3) svg *,
+.ratings-container .ratings-list.selected-rating-4 .rating-item:nth-of-type(4) svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container .ratings-list.selected-rating-5 .rating-item svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container .rating-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 25px;
+  height: 25px;
+}
+
+.ratings-container .rating-item label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ratings-container .rating-item input {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
+}
+
+.ratings-container .rating-item input:focus + span {
+  outline: 1;
+  outline: thin dotted;
+}
+
+.ratings-container .rating-item.no-rating {
+  margin-left: 30px;
+}
+
+.ratings-container.minimal-display .rating-item {
+  height: 25px;
+  width: 25px;
+}
+
+.ratings-container.minimal-display .rating-item.leftover {
+  text-align: left;
+}
+
+.ratings-container.minimal-display .rating-item.leftover > span {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.ratings-container.minimal-display .rating-item svg * {
+  fill-opacity: 100;
+}
+
+.ratings-container.minimal-display .rating-text-container {
+  font-size: 2.3rem;
+}
+
+.ratings-container.minimal-display .rating-text-container .measure::before {
+  content: " ";
+  display: inline-block;
+}
+
+.ratings-container.interactive-rating .rating-item {
+  margin-right: 10px;
+}
+
+.ratings-container.interactive-rating .rating-item svg, .ratings-container.interactive-rating .rating-item svg * {
+  cursor: pointer;
 }
 
 #headerWrapper .header-navigation-wrapper, #headerWrapper .header-navigation-wrapper .main-menu li, #headerWrapper .header-branding, #headerWrapper .header-branding IMG, #headerWrapper .site-title, #headerWrapper, #mobileMenuToggle, #contactToggle, #interfaceToggle {
@@ -1383,11 +1508,6 @@ b, strong {
   min-width: 320px;
 }
 
-.post-part-container .post-part-media.video .mgb video:focus {
-  outline: 0;
-  outline: none;
-}
-
 .post-part-container .post-part-media.video .mgb figure {
   background-color: #000000;
 }
@@ -1735,7 +1855,18 @@ b, strong {
 }
 
 .schema-markup, .schema-meta-header {
-  display: none;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
 }
 
 #contentWrapper.constrain-image-blocks .post-part-container.left-media .content-wrap > div:first-child, #contentWrapper.constrain-image-blocks .post-part-container.right-media .content-wrap > div:last-child {
@@ -2111,6 +2242,27 @@ div.comment:first-of-type {
 
 .comments .comment-reply-title, .comments span.fn {
   font-weight: 700;
+}
+
+.comments-wrapper .ratings-container {
+  padding-bottom: 20px;
+}
+
+.comments-wrapper .ratings-container .ratings-list {
+  padding-bottom: 10px;
+}
+
+.comments-wrapper .comment-body .rating-item {
+  width: 19px;
+  margin-right: 2px;
+}
+
+.comments-wrapper .comment-body .rating-item svg * {
+  fill-opacity: 100;
+}
+
+.comments-wrapper .comment-body .rating-item svg {
+  max-width: 100%;
 }
 
 #headerWrapper .header-navigation-wrapper, #headerWrapper .header-navigation-wrapper .main-menu li, #headerWrapper .header-branding, #headerWrapper .header-branding IMG, #headerWrapper .site-title, #headerWrapper, #mobileMenuToggle, #contactToggle, #interfaceToggle {

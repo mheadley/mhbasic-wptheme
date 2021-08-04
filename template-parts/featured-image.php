@@ -45,6 +45,8 @@ if ( has_post_thumbnail() && ! post_password_required() ) {
     <div class="content-position-bottom">
     <div class="content-wrap">
       <div class="lyt"><div class="txb">
+
+			<?php mhbasictheme_show_post_rating(get_the_ID()) ?>
       <?php 
         if ( is_singular() ) {
           the_title( '<h1 class="entry-title">', '</h1>' );
@@ -52,6 +54,7 @@ if ( has_post_thumbnail() && ! post_password_required() ) {
           the_title( '<h3 class="entry-title heading-size-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
         }
       ?>
+
       <?php 
       $postSubtitle = get_post_meta( get_the_ID(), 'mh_mhbasictheme_post_subtitle', true ); 
       if($postSubtitle){
@@ -62,6 +65,7 @@ if ( has_post_thumbnail() && ! post_password_required() ) {
 	
 
       ?>
+
       
       </div></div>
 

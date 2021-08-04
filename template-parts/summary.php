@@ -13,12 +13,23 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>"  itemscope itemtype="http://schema.org/Article" itemid="<?php echo  esc_url( get_permalink() ) ?>">
+<?php
+global $MHBASICTHEME_post_idx;
+$MHBASICTHEME_post_class = ($MHBASICTHEME_post_idx%2 == 0) ? 'even' : 'odd';
+$blockScrollEffect = "";
+if(get_theme_mod( 'post_archive_scroll_effect', "none" ) == "alternating"){
+	$blockScrollEffect = ($MHBASICTHEME_post_idx%2 == 0) ? "rightInOut" : "linRout";
+} else{
+	$blockScrollEffect  = get_theme_mod( 'post_archive_scroll_effect', "none" );
+}
+?>
+
+<article <?php post_class($MHBASICTHEME_post_class); ?> id="post-<?php the_ID(); ?>"  itemscope itemtype="http://schema.org/Article" itemid="<?php echo  esc_url( get_permalink() ) ?>">
 
 	<div class="post-content-list-container">
 
 	<div class="post-inner content-wrap">
-		<div class="lyt archive-image  <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'bxTr fadeInNoOut';}?>" <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'data-box-transition="fadeInNoOut"';}?> itemscope itemprop="image" itemtype="https://schema.org/ImageObject">
+		<div class="lyt archive-image  <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'bxTr '. $blockScrollEffect;}?>" <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'data-box-transition="'. $blockScrollEffect . '"';}?> itemscope itemprop="image" itemtype="https://schema.org/ImageObject">
 		<div class="mgb">
     <a href="<?php echo  esc_url( get_permalink() ) ?>" itemprop="url">
 			<?php 
@@ -40,7 +51,7 @@
 				<meta itemprop="height" content="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id())[2] ?>">
     			<meta itemprop="url" content="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id())[0] ?>">
 				</div>
-			<div class="lyt archive-content <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'bxTr downInNoOut';}?>" <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'data-box-transition="downInNoOut"';}?>>
+			<div class="lyt archive-content <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'bxTr '. $blockScrollEffect;}?>" <?php if(get_theme_mod( 'enable_scroll_effects', true ) === true ){ echo 'data-box-transition="'. $blockScrollEffect . '"';}?>>
 			<div class="txb">
 		<span class="type">
 			
@@ -55,6 +66,7 @@
 		
 		?></span>
 			<?php  the_title( '<h3 class="entry-title heading-size-3" itemprop="name"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' ); ?>
+			<?php mhbasictheme_show_post_rating(get_the_ID()) ?>
       <div class="post-excerpt">
       <?php
       if(has_excerpt()){

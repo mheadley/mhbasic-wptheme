@@ -310,3 +310,24 @@ div.comment:first-of-type {
   @include fancy-font(16,28, 400);
   .comment-reply-title, span.fn{ font-weight: 700;}
 }
+
+.comments-wrapper{
+	.ratings-container{
+		padding-bottom: 20px;
+		.ratings-list{
+			padding-bottom: 10px;
+		}
+	}
+	.comment-body{
+		.rating-item{
+			width: 19px;
+			margin-right: 2px;
+			svg * {
+				fill-opacity: 100; 
+			}
+			svg{
+				max-width: 100%;
+			}
+		}
+	}
+}
