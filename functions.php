@@ -365,6 +365,7 @@ function mhbasictheme_get_custom_logo( $html ) {
             );
 
             // Add a style attribute with the height, or append the height to the style attribute if the style attribute already exists.
+            //TBD: should i use when CSS is better since it can override easier?
             // if ( strpos( $html, ' style=' ) === false ) {
             //     $search[]  = '/(src=)/';
             //     $replace[] = "style=\"height: {$logo_height}px; width: auto;\" src=";
