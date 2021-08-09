@@ -20,9 +20,12 @@
   const REVEAL_ALLOWED_BLOCKS = [  'core/paragraph',  'core/gallery', 'core/pullquote', 'core/file', 'core/html',  'core/button', 'core/list', 'core/heading','core/table'];
 
   function makeImageRelative(url){
-    urlFrags = url.toUppercase().split("://");
-    if(urlFrags[1].indexOf(BLOGINFO.uploadURL.toUppercase()) === 0){
-      return urlFrags[1].replace(BLOGINFO.blogUrl.toUppercase(), "").toLowerCase();
+    if(BLOCKCONFIG && BLOCKCONFIG.relativePaths === 0){
+      return url;
+    }
+    urlFrags = url.toUpperCase().split("://");
+    if(urlFrags[1].indexOf(BLOGINFO.uploadURL.toUpperCase()) === 0){
+      return urlFrags[1].replace(BLOGINFO.blogUrl.toUpperCase(), "").toLowerCase();
     } else{
       return urlFrags.join("://").toLowerCase();
     }

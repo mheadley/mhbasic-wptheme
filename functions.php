@@ -220,7 +220,7 @@ function mhbasictheme_register_styles() {
 
 
     // Add print CSS.
-    wp_enqueue_style( 'mhbasictheme-print-style', get_template_directory_uri() . '/assets/css/print.css', null, $theme_version, 'print' );
+    wp_enqueue_style( 'mhbasictheme-print-style', get_template_directory_uri() . '/assets/css/print.css', array('layout', 'responsive', 'screen' ) , $theme_version, 'print' );
 
     wp_enqueue_style('screen', get_template_directory_uri() .'/assets/css/app.css' );
 
@@ -921,7 +921,10 @@ function mhbasictheme_get_elements_array() {
         'templateUrl' => explode("://", get_stylesheet_directory_uri())[1],
         'uploadPath' => $upload_dir_name,
         'uploadURL' => explode("://", (get_site_url() . $upload_dir_name))[1]
-    ) ), 'before' );
+    )) . '; const BLOCKCONFIG = '.  json_encode( array(
+        'relativePaths' => get_theme_mod( 'relative_img_blk', 0 ). ""
+
+    )), 'before' );
 
     register_block_type( 'mhbasictheme-layout/revealing-blocks', array(
       'editor_script' => 'mhbasictheme-layout-revealing-blocks',
@@ -1145,6 +1148,25 @@ add_filter('wpo_wcpdf_tmp_path', function( $tmp_base ) {
 
 add_action( 'comment_form_logged_in_after', 'mhbasictheme_comment_rating_rating_field' );
 add_action( 'comment_form_after_fields', 'mhbasictheme_comment_rating_rating_field' );
+
+add_action( 'comment_form_logged_in_after', 'mhbasictheme_comment_honeypot' );
+add_action( 'comment_form_after_fields', 'mhbasictheme_comment_honeypot' );
+
+function mhbasictheme_comment_honeypot(){
+  global $post;
+  if(get_theme_mod( 'activate_honeypot_tests', 0 ) > 0 && get_theme_mod( 'activate_honeypot_timetrial', 0 ) > 0 ) {
+  ?>
+  <input type="hidden" id="form_generated_time" name="form_generated_time" value="<?php echo  time(); ?>" tabindex="-1" /><?php
+  }
+  if(get_theme_mod( 'activate_honeypot_tests', 0) > 0 && get_theme_mod( 'activate_honeypot_emailField', 0 ) > 0 ){
+  ?>
+   <label class="important-note-a11y">
+     <span class="sr-only">Please leave empty to confirm email</span>
+     <input type="text" id="confirm_email" name="confirm_email" value="" tabindex="-1" /></label>
+  <?php
+  }
+}
+
 function mhbasictheme_comment_rating_rating_field () {
     global $post;
     if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
@@ -1177,9 +1199,32 @@ function mhbasictheme_comment_rating_save_comment_rating( $comment_id ) {
     }
 }
 
+
+add_filter( 'preprocess_comment', 'mhbasictheme_comment_honeypot_process' );
+function mhbasictheme_comment_honeypot_process( $commentdata ){
+  if(get_theme_mod( 'activate_honeypot_tests', 0 ) === 0  || is_user_logged_in()) {
+    return $commentdata;
+  }
+  if(get_theme_mod( 'activate_honeypot_timetrial', 0 ) > 0  ){
+    $commentDelayAmt = (int)(get_theme_mod( 'comment_delay', 45 ));
+    $shouldComment = ($_POST['form_generated_time'] + $commentDelayAmt) < time() ? 1 : 0;
+    //$delay =  time() - $_POST['form_generated_time'];
+    if(!$shouldComment){ 
+      wp_die( __( 'Error: You tripped an auto spam feature.  Please refresh page, and try again. '));
+    } 
+  }
+  if(  get_theme_mod( 'activate_honeypot_emailField', 0 ) > 0 && $_POST['confirm_email']){
+    wp_die( __( 'Error: You tripped an auto spam feature.  Please read all instructions and and try again. '));
+  } 
+
+  return $commentdata;
+  
+}
+
 //Make the rating required.
 add_filter( 'preprocess_comment', 'mhbasictheme_comment_rating_require_rating' );
 function mhbasictheme_comment_rating_require_rating( $commentdata ) {
+    
     if(get_theme_mod( 'comment_or_review', 0 ) > 0 ){ 
         if ( ! is_admin() && ( ! isset( $_POST['rating'] ) || 0 === intval( $_POST['rating'] ) ) )
         wp_die( __( 'Error: You did not add a rating. Hit the Back button on your Web browser and resubmit your comment with a rating.' ) );

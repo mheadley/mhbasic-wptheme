@@ -17,17 +17,27 @@ function mhbasictheme_slug_sanitize_radio( $input, $setting ) {
 function mhbasictheme_customize_register( $wp_customize ) {
   // Do stuff with $wp_customize, the WP_Customize_Manager object.
 
-  $wp_customize->add_section( 'hmpCover' , array(
-	'title'    => __( 'Homepage Feature', 'mhbasictheme' ),
-	'priority' => 0
+  $wp_customize->add_section( 'animationEffects' , array(
+	'title'    => __( 'Scroll and Effects', 'mhbasictheme' ),
+	'priority' => 10
 	) );   
 
 	$wp_customize->add_section( 'schemaOptions' , array(
 		'title'    => __( 'Schema Settings', 'mhbasictheme' ),
-		'priority' => 2
+		'priority' => 80
 		) );  
 
 
+		$wp_customize->add_section( 'blkOptions' , array(
+			'title'    => __( 'Block Settings', 'mhbasictheme' ),
+			'priority' => 35
+			) );  
+
+	$wp_customize->add_section( 'spamSettings' , array(
+		'title'    => __( 'Spam Prevention', 'mhbasictheme' ),
+		'priority' => 50
+		) );  
+	
 $wp_customize->add_setting(
 	'hmp_show_masthead',
 	array(
@@ -42,9 +52,103 @@ $wp_customize->add_control(
 	'hmp_show_masthead',
 	array(
 		'type'     => 'checkbox',
-		'section'  => 'hmpCover',
+		'section'  => 'static_front_page',
 		'label'    => esc_html__(  'Show Homepage Feature', 'mhbasictheme' ),
 	)
+);
+
+
+
+
+
+$wp_customize->add_setting(
+	'relative_img_blk',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => 0,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'relative_img_blk',
+	array(
+		'type' => 'radio',
+		'section' => 'blkOptions', // Add a default or your own section
+		'label' => __( 'Relative Paths for blocks' ),
+		'description' => __( 'When picking image use absolute or relative path?' ),
+		'choices' => array(
+			0 => __( 'Absolute' ),
+			1 => __( 'Relative' ),
+	))
+);
+
+$wp_customize->add_setting(
+	'activate_honeypot_tests',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => 0,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'activate_honeypot_tests',
+	array(
+		'type' => 'radio',
+		'section' => 'spamSettings', // Add a default or your own section
+		'label' => __( 'Activate Honeypot?' ),
+		'choices' => array(
+			0 => __( 'Deactivate' ),
+			1 => __( 'Activate' ),
+	))
+);
+
+
+$wp_customize->add_setting(
+	'activate_honeypot_timetrial',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => 0,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'activate_honeypot_timetrial',
+	array(
+		'type' => 'radio',
+		'section' => 'spamSettings', // Add a default or your own section
+		'label' => __( 'Honeypot Time Trial?' ),
+		'choices' => array(
+			0 => __( 'No' ),
+			1 => __( 'Yes' ),
+	))
+);
+
+$wp_customize->add_setting(
+	'activate_honeypot_emailField',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => 0,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'activate_honeypot_emailField',
+	array(
+		'type' => 'radio',
+		'section' => 'spamSettings', // Add a default or your own section
+		'label' => __( 'Honeypot Email Field?' ),
+		'choices' => array(
+			0 => __( 'No' ),
+			1 => __( 'Yes' ),
+	))
 );
 
 
@@ -72,6 +176,27 @@ $wp_customize->add_control(
 	))
 );
 
+
+$wp_customize->add_setting( 'comment_delay', array(
+	'type' => 'theme_mod', // or 'option'
+	'capability' => 'edit_theme_options',
+	'default'  => 45,
+	'transport' => 'refresh' // or postMessage,
+) );
+$wp_customize->add_control('comment_delay', array(
+	'label'   => 'Comment Delay',
+	'section' => 'spamSettings',
+	'type'    => 'select',
+	'description' => __( 'honepot technique: This is to prevent Spam using a time feature' ),
+	'choices' => array(
+		30 => '30 seconds',
+		45 => '45 seconds',
+		60 => '1 minute',
+		120 => '2 minutes',
+		180 => '3 minutes',
+		300 => '5 minutes',
+	)
+));
 
 
 
@@ -120,19 +245,6 @@ $wp_customize->add_control('rating_mini_text', array(
 )));
 
 
-// $wp_customize->add_setting( 'mhbasictheme_branding_image', array(
-// 	'type' => 'theme_mod', // or 'option'
-// 	'capability' => 'edit_theme_options',
-// 	'transport' => 'refresh' // or postMessage,
-//   ) );
-
-//   $wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize, 'mhbasictheme_branding_image', array(
-// 	'section' => 'title_tagline',
-// 	'label'   => esc_html__( 'Watermark Image', 'mhbasictheme' ), 
-// 	'width' => 500,
-//     'height' => 200
-// )));
-
 
 
 $wp_customize->add_setting( 'hmp_cover_image', array(
@@ -143,7 +255,7 @@ $wp_customize->add_setting( 'hmp_cover_image', array(
 
 
 $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'hmp_cover_image', array(
-	'section' => 'hmpCover',
+	'section' => 'static_front_page',
 	'label'   => esc_html__( 'Homepage Feature Image', 'mhbasictheme' )
 )));
 
@@ -163,7 +275,7 @@ $wp_customize->add_control(
 	'hmp_stretch_cover_width',
 	array(
 		'type'     => 'checkbox',
-		'section'  => 'hmpCover',
+		'section'  => 'static_front_page',
 		'label'    => esc_html__(  'Homepage Cover fills screen width', 'mhbasictheme' ),
 	)
 );
@@ -184,7 +296,7 @@ $wp_customize->add_control(
 	'hmp_stretch_cover_height',
 	array(
 		'type'     => 'checkbox',
-		'section'  => 'hmpCover',
+		'section'  => 'static_front_page',
 		'label'    => esc_html__(  'Cover image fills screen height', 'mhbasictheme' ),
 	)
 );
@@ -201,7 +313,7 @@ $wp_customize->add_setting( 'hmp_cover_title_text', array(
 
 $wp_customize->add_control('hmp_cover_title_text', array(
   'label'   => 'Homepage Cover Title',
-   'section' => 'hmpCover',
+   'section' => 'static_front_page',
   'type'    => 'textarea',
  ));
 
@@ -214,7 +326,7 @@ $wp_customize->add_setting( 'hmp_cover_title_align', array(
 
 $wp_customize->add_control('hmp_cover_title_align', array(
   'label'   => 'Text Align',
-   'section' => 'hmpCover',
+   'section' => 'static_front_page',
    'type'    => 'select',
    'choices' => array(
        'left' => 'Left',
@@ -233,7 +345,7 @@ $wp_customize->add_setting( 'hmp_cover_title_valign', array(
 
 $wp_customize->add_control('hmp_cover_title_valign', array(
   'label'   => 'Vertical Position',
-   'section' => 'hmpCover',
+   'section' => 'static_front_page',
    'type'    => 'select',
    'choices' => array(
        'center' => 'Center',
@@ -249,7 +361,7 @@ $wp_customize->add_control('hmp_cover_title_valign', array(
   ) );
 
  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'hmp_cover_title_color', array(
-	'section' => 'hmpCover',
+	'section' => 'static_front_page',
 	'label'   => esc_html__( 'Text Color', 'mhbasictheme' ),
   ) ) );
 
