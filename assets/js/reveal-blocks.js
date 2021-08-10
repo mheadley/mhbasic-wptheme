@@ -30,6 +30,19 @@
       return urlFrags.join("://").toLowerCase();
     }
   }
+  
+  function makeDurationReadable(string){
+    newArgs = string.split(":");
+    if(newArgs.length == 1){
+      return "PT0M" + newArgs[0] + "S" ;
+    }
+    if(newArgs.length == 2){
+      return "PT" + newArgs[0] +"M" + newArgs[1] + "S" ;
+    }
+    if(newArgs.length == 3){
+      return "PT" + newArgs[0] + "H" + newArgs[1] +"M" + newArgs[2] + "S" ;
+    }
+  }
 
   function addListBlockParent( settings, name ) {
     //if(name === "mhbasictheme-layout/reveal-block"){ return settings;}
@@ -78,6 +91,9 @@
       },
       mediaSizes: {
         type: 'object'
+      },
+      mediaDuration: {
+        type: 'string',
       },
       mediaType: {
         type: 'string',
@@ -144,6 +160,9 @@
       },
       media2Sizes: {
         type: 'object'
+      },
+      media2Duration: {
+        type: 'string',
       },
       media2URL: {
         type: 'string',
@@ -307,6 +326,7 @@
           mediaSizes: media.sizes ? media.sizes : null,
           mediaAlt: media.alt,
           mediaPosterURL: null,
+          mediaDuration: media.type == "video" ? makeDurationReadable(media.fileLength) : null,
           mediaCaptionURL: null,
           mediaType: media.type,
           mediaDate: today.toISOString()
@@ -328,6 +348,7 @@
           media2URL: makeImageRelative(mediaUrl),
           media2ID: media.id,
           media2Alt: media.alt,
+          media2Duration: media.type == "video" ? makeDurationReadable(media.fileLength) : null,
           media2Sizes: media.sizes ? media.sizes : null,
           mediaType: media.type
         })
@@ -355,10 +376,12 @@
             mediaCaptionURL: "",
             mediaPosterURL: null,
             mediaDate: "",
+            mediaDuration: null,
             media2URL: "",
             media2ID: "",
             media2Alt: "",
             mediaAmount: 1,
+            media2Duration: null,
             media2Sizes: null,
           })
         } else{
@@ -1038,6 +1061,10 @@
               el('meta', {
                 itemprop: "uploadDate",
                 content: attributes.mediaDate
+                }),
+                el('meta', {
+                  itemprop: "duration",
+                  content: attributes.mediaDuration
                 }),
 
                 attributes.body != "" && el('meta', {
