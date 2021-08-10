@@ -31,8 +31,11 @@
     }
   }
   
-  function makeDurationReadable(string){
-    newArgs = string.split(":");
+  function makeDurationReadable(mediaObj){
+    if(!mediaObj.fileLength){
+      return null;
+    }
+    newArgs = mediaObj.fileLength.split(":");
     if(newArgs.length == 1){
       return "PT0M" + newArgs[0] + "S" ;
     }
@@ -326,7 +329,7 @@
           mediaSizes: media.sizes ? media.sizes : null,
           mediaAlt: media.alt,
           mediaPosterURL: null,
-          mediaDuration: media.type == "video" ? makeDurationReadable(media.fileLength) : null,
+          mediaDuration: media.type == "video" ? makeDurationReadable(media) : null,
           mediaCaptionURL: null,
           mediaType: media.type,
           mediaDate: today.toISOString()
@@ -348,7 +351,7 @@
           media2URL: makeImageRelative(mediaUrl),
           media2ID: media.id,
           media2Alt: media.alt,
-          media2Duration: media.type == "video" ? makeDurationReadable(media.fileLength) : null,
+          media2Duration: media.type == "video" ? makeDurationReadable(media) : null,
           media2Sizes: media.sizes ? media.sizes : null,
           mediaType: media.type
         })
@@ -1062,7 +1065,7 @@
                 itemprop: "uploadDate",
                 content: attributes.mediaDate
                 }),
-                el('meta', {
+                attributes.mediaDuration && el('meta', {
                   itemprop: "duration",
                   content: attributes.mediaDuration
                 }),
