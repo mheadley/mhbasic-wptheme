@@ -2265,6 +2265,21 @@ div.comment:first-of-type {
   max-width: 100%;
 }
 
+label.important-note-a11y {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
+}
+
 #headerWrapper .header-navigation-wrapper, #headerWrapper .header-navigation-wrapper .main-menu li, #headerWrapper .header-branding, #headerWrapper .header-branding IMG, #headerWrapper .site-title, #headerWrapper, #mobileMenuToggle, #contactToggle, #interfaceToggle {
   -webkit-transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
   transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);

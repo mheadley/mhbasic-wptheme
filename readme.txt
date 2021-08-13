@@ -2,8 +2,8 @@
 Contributors: the WordPress team
 Tested up to: 5.3
 Stable tag: 1.1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: APACHE
+License URI:   http://www.apache.org/licenses/LICENSE-2.0
 
 Default theme for 2020.
 
@@ -14,20 +14,10 @@ This is a block based theme that leverages customizations, built in schema, and 
 == Copyright ==
 
 Mheadley Basic WordPress Theme, Copyright 2019 WordPress.org
-Mheadley Basic is distributed under the terms of the GNU GPL.
+Mheadley Basic is distributed under the terms of the APACHE v2 License.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-Mheadley Basic is derived from the Chaplin Theme, Copyright 2019 Anders Norén
-Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
+Mheadley Basic is derived from the TwentyTwenty Theme, Copyright 2019 Wordpress
+TwentyTwenty Theme is distributed under the terms of the GNU GPL version 2.0
 
 Mheadley Basic bundles the following third-party resources:
 

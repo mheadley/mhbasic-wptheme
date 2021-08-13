@@ -254,7 +254,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'      => __( 'Theme Options', 'mhbasictheme' ),
+					'title'      => __( 'Basic Settings', 'mhbasictheme' ),
 					'priority'   => 40,
 					'capability' => 'edit_theme_options',
 				)
@@ -294,7 +294,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 				'enable_scroll_effects',
 				array(
 					'type'     => 'checkbox',
-					'section'  => 'options',
+					'section'  => 'animationEffects',
 					'priority' => 10,
 					'label'    => __( 'Enable scroll  effects globally', 'mhbasictheme' ),
 				)
@@ -314,7 +314,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 				'enable_sticky_scroll',
 				array(
 					'type'     => 'checkbox',
-					'section'  => 'options',
+					'section'  => 'animationEffects',
 					'priority' => 10,
 					'label'    => __( 'Enable sticky  elements globally', 'mhbasictheme' ),
 				)
@@ -465,7 +465,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 
 			$wp_customize->add_control('post_archive_scroll_effect', array(
 			'label'   => 'Effect for Post archives',
-			'section' => 'options',
+			'section' => 'animationEffects',
 			'type'    => 'select',
 			'choices' => array(
 				'none' => 'No Effect',

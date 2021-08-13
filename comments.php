@@ -21,13 +21,10 @@ if ( post_password_required() ) {
 
 if ( comments_open() || pings_open() ) {
 
+	$i = 0;
+	$aggregateRating = " ";
 	if ( $comments ) {
-		//echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
-
-		$i = 0;
 		$total = 0;
-		$ratingCount = 0;
-		$aggregateRating;
 		foreach( $comments as $comment ){
 			$rate = get_comment_meta( $comment->comment_ID, 'rating', true );
 			if( isset( $rate ) && '' !== $rate ) {
@@ -35,7 +32,6 @@ if ( comments_open() || pings_open() ) {
 				$total += $rate;
 			}
 		}
-
 		if ( 0 === $i ) {
 			//return false;
 		} else {
