@@ -20,11 +20,30 @@
   const REVEAL_ALLOWED_BLOCKS = [  'core/paragraph',  'core/gallery', 'core/pullquote', 'core/file', 'core/html',  'core/button', 'core/list', 'core/heading','core/table'];
 
   function makeImageRelative(url){
-    urlFrags = url.toUppercase().split("://");
-    if(urlFrags[1].indexOf(BLOGINFO.uploadURL.toUppercase()) === 0){
-      return urlFrags[1].replace(BLOGINFO.blogUrl.toUppercase(), "").toLowerCase();
+    if(BLOCKCONFIG && BLOCKCONFIG.relativePaths === 0){
+      return url;
+    }
+    urlFrags = url.toUpperCase().split("://");
+    if(urlFrags[1].indexOf(BLOGINFO.uploadURL.toUpperCase()) === 0){
+      return urlFrags[1].replace(BLOGINFO.blogUrl.toUpperCase(), "").toLowerCase();
     } else{
       return urlFrags.join("://").toLowerCase();
+    }
+  }
+  
+  function makeDurationReadable(mediaObj){
+    if(!mediaObj.fileLength){
+      return null;
+    }
+    newArgs = mediaObj.fileLength.split(":");
+    if(newArgs.length == 1){
+      return "PT0M" + newArgs[0] + "S" ;
+    }
+    if(newArgs.length == 2){
+      return "PT" + newArgs[0] +"M" + newArgs[1] + "S" ;
+    }
+    if(newArgs.length == 3){
+      return "PT" + newArgs[0] + "H" + newArgs[1] +"M" + newArgs[2] + "S" ;
     }
   }
 
@@ -75,6 +94,9 @@
       },
       mediaSizes: {
         type: 'object'
+      },
+      mediaDuration: {
+        type: 'string',
       },
       mediaType: {
         type: 'string',
@@ -141,6 +163,9 @@
       },
       media2Sizes: {
         type: 'object'
+      },
+      media2Duration: {
+        type: 'string',
       },
       media2URL: {
         type: 'string',
@@ -304,6 +329,7 @@
           mediaSizes: media.sizes ? media.sizes : null,
           mediaAlt: media.alt,
           mediaPosterURL: null,
+          mediaDuration: media.type == "video" ? makeDurationReadable(media) : null,
           mediaCaptionURL: null,
           mediaType: media.type,
           mediaDate: today.toISOString()
@@ -325,6 +351,7 @@
           media2URL: makeImageRelative(mediaUrl),
           media2ID: media.id,
           media2Alt: media.alt,
+          media2Duration: media.type == "video" ? makeDurationReadable(media) : null,
           media2Sizes: media.sizes ? media.sizes : null,
           mediaType: media.type
         })
@@ -352,10 +379,12 @@
             mediaCaptionURL: "",
             mediaPosterURL: null,
             mediaDate: "",
+            mediaDuration: null,
             media2URL: "",
             media2ID: "",
             media2Alt: "",
             mediaAmount: 1,
+            media2Duration: null,
             media2Sizes: null,
           })
         } else{
@@ -1036,6 +1065,10 @@
                 itemprop: "uploadDate",
                 content: attributes.mediaDate
                 }),
+                attributes.mediaDuration && el('meta', {
+                  itemprop: "duration",
+                  content: attributes.mediaDuration
+                }),
 
                 attributes.body != "" && el('meta', {
                   itemprop: "description",
@@ -1608,7 +1641,7 @@
                 
                 ),
                 el( InnerBlocks, {
-                    allowedBlocks:  ['core/heading', 'core/pullquote', 'core/file', 'core/button']
+                    allowedBlocks:  ['core/heading', 'core/pullquote', 'core/file',  'core/html',  'core/button']
                     // allowedBlocks:  REVEAL_ALLOWED_BLOCKS
                   }
                 )

@@ -1,5 +1,18 @@
 # Change Log
 
+
+## [1.6.0] - 2021-08-09
+
+**Implemented enhancements:**
+
+- organize theme options/settings
+- add honeypot  to core of theme and ability to disable (comment delay and timer added as honepot options)
+
+**Fixed bugs:**
+- css for print now showing out of frame
+
+
+
 ## [1.5.8] - 2021-08-04
 
 **Implemented enhancements:**

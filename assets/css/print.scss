@@ -1,8 +1,11 @@
+@charset "UTF-8";
+
 /*
 Theme Name: Mheadley Basic
 Adding print support. The print styles are based on the the great work of
 Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272/.
 */
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -15,18 +18,25 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
 # Visibility
 --------------------------------------------------------------*/
 @media print {
+
   /* Margins */
+
   @page {
     margin: 2cm;
   }
+
   .entry-header {
     margin: 0;
   }
+
   /* Paddings */
+
   .posts {
     padding: 0;
   }
+  
   /* Width */
+
   .entry-content,
   .entry-content p,
   .section-inner,
@@ -37,19 +47,20 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     max-width: 100%;
     width: 100%;
   }
+
   /* Fonts */
+
   body {
     background: #fff !important;
     color: #000;
     font: 13pt Georgia, "Times New Roman", Times, serif;
-    line-height: 1.3;
-    height: auto;
-    position: relative;
-    display: block;
+    line-height: 1.3; height: auto; position: relative; display: block;
   }
+
   h1 {
     font-size: 20pt;
   }
+
   h2,
   h2.entry-title,
   h3,
@@ -61,13 +72,17 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     font-size: 14pt;
     margin-top: 1cm;
   }
+
   /* Page breaks */
+
   a {
     page-break-inside: avoid;
   }
+
   blockquote {
     page-break-inside: avoid;
   }
+
   h1,
   h2,
   h3,
@@ -77,20 +92,25 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     page-break-after: avoid;
     page-break-inside: avoid;
   }
+
   img {
     page-break-inside: avoid;
     page-break-after: avoid;
   }
+
   table,
   pre {
     page-break-inside: avoid;
   }
+
   ul,
   ol,
   dl {
     page-break-before: avoid;
   }
+
   /* Links */
+  
   a:link,
   a:visited,
   a {
@@ -98,22 +118,29 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     font-weight: bold;
     text-decoration: underline;
   }
+
   a {
     page-break-inside: avoid;
   }
+
   a[href^="http"]:after {
     content: " < " attr(href) "> ";
   }
+
   a:after > img {
     content: "";
   }
+
   article a[href^="#"]:after {
     content: "";
   }
+
   a:not(:local-link):after {
     content: " < " attr(href) "> ";
   }
+
   /* Visibility */
+
   #site-header,
   .comment-form,
   .comments-wrapper,
@@ -126,6 +153,7 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
   .post-separator {
     display: none;
   }
+
   .entry-content .wp-block-button .wp-block-button__link,
   .entry-content .wp-block-button .wp-block-file__button,
   .entry-content .button {
@@ -133,30 +161,18 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     color: #000;
   }
 }
-
-body {
-  position: relative;
-  overflow: auto;
-  height: auto;
+//neutralize container nesting css
+body{
+  position: relative; overflow: auto; height: auto;
 }
-
-#bodyWrapper, #windowWrapper, #windowContainer {
-  position: relative;
-  display: block;
-  overflow: auto;
-  height: auto;
+#bodyWrapper, #windowWrapper, #windowContainer{
+  position: relative; display: block; overflow: auto; height: auto;
 }
-
-#bodyWrapper #contentWrapper.block-transitions-enabled .bxTr {
-  opacity: 1;
-  -webkit-transform: none;
-          transform: none;
+//nuetralize effects css
+#bodyWrapper #contentWrapper.block-transitions-enabled .bxTr{
+ opacity: 1;
+ transform: none;
 }
-
-#bodyWrapper, #contentWrapper {
-  -webkit-column-break-inside: auto;
-          break-inside: auto;
-  position: relative;
-  overflow: auto;
+#bodyWrapper, #contentWrapper{
+  break-inside: auto; position: relative; overflow: auto;
 }
-/*# sourceMappingURL=print.css.map */
