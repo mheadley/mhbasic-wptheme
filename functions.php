@@ -949,7 +949,7 @@ if(!function_exists('mhbasictheme_allowed_block_types')){
             return $allowed_blocks;
         }
       
-        $baseBlocks = array( 'core/paragraph',  'core/gallery', 'core/file', 'core/pullquote', 'core/button', 'core/list', 'core/heading','core/table');
+        $baseBlocks = array( 'core/paragraph',  'core/gallery', 'core/file',  'core/html', 'core/pullquote', 'core/button', 'core/list', 'core/heading','core/table');
         $pagesBlocksAllowed = array_merge($baseBlocks, array(
             'mhbasictheme-layout/image-part',
             'mhbasictheme-layout/post-part'
@@ -1141,6 +1141,21 @@ if ( ! function_exists( 'is_woocommerce_activated' ) ) {
 	}
 }
 
+
+function  mhbasictheme_unset_url_field($fields){
+  if(get_theme_mod( 'disable_url_for_comment', false ) === true){
+    if(isset($fields['url'])){
+      unset($fields['url']);
+    }
+  }
+  //   return $fields;
+  //if(isset($fields['url']))
+  //unset($fields['url']);
+  return $fields;
+}
+
+add_filter('comment_form_default_fields', 'mhbasictheme_unset_url_field', 80);
+
 add_filter('wpo_wcpdf_tmp_path', function( $tmp_base ) {
     return dirname(__FILE__).'/woocommerce-invoices/';
 });
@@ -1206,15 +1221,15 @@ function mhbasictheme_comment_honeypot_process( $commentdata ){
     return $commentdata;
   }
   if(get_theme_mod( 'activate_honeypot_timetrial', 0 ) > 0  ){
-    $commentDelayAmt = (int)(get_theme_mod( 'comment_delay', 45 ));
+    $commentDelayAmt = (int)(get_theme_mod( 'comment_delay', 30 ));
     $shouldComment = ($_POST['form_generated_time'] + $commentDelayAmt) < time() ? 1 : 0;
     //$delay =  time() - $_POST['form_generated_time'];
     if(!$shouldComment){ 
-      wp_die( __( 'Error: You tripped an auto spam feature.  Please refresh page, and try again. '));
+      wp_die( __( 'Error: You activated an auto spam feature.  Please go back to last page, and try again. '));
     } 
   }
   if(  get_theme_mod( 'activate_honeypot_emailField', 0 ) > 0 && $_POST['confirm_email']){
-    wp_die( __( 'Error: You tripped an auto spam feature.  Please read all instructions and and try again. '));
+    wp_die( __( 'Error: You activated an auto spam feature.  Please read all instructions and and try again. '));
   } 
 
   return $commentdata;
@@ -1231,6 +1246,8 @@ function mhbasictheme_comment_rating_require_rating( $commentdata ) {
     }
 	return $commentdata;
 }
+
+
 
 function mhbasictheme_get_average_rating( $id ) {
 	$comments = get_approved_comments( $id );

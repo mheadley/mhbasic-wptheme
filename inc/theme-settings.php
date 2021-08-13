@@ -107,27 +107,30 @@ $wp_customize->add_control(
 );
 
 
+
+
 $wp_customize->add_setting(
-	'activate_honeypot_timetrial',
+	'disable_url_for_comment',
 	array(
 		'capability'        => 'edit_theme_options',
-		'default'           => 0,
-		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'default'           => false,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_checkbox' ,
 		'transport' => 'refresh' // or postMessage,
 	)
 );
 
 $wp_customize->add_control(
-	'activate_honeypot_timetrial',
+	'disable_url_for_comment',
 	array(
-		'type' => 'radio',
-		'section' => 'spamSettings', // Add a default or your own section
-		'label' => __( 'Honeypot Time Trial?' ),
-		'choices' => array(
-			0 => __( 'No' ),
-			1 => __( 'Yes' ),
-	))
+		'type'     => 'checkbox',
+		'section'  => 'spamSettings',
+		'label'    => esc_html__(  'Remove Url field?', 'mhbasictheme' ),
+		'description' => __( 'This field attracts the most spammers' ),
+	)
 );
+
+
+
 
 $wp_customize->add_setting(
 	'activate_honeypot_emailField',
@@ -177,27 +180,50 @@ $wp_customize->add_control(
 );
 
 
+
+$wp_customize->add_setting(
+	'activate_honeypot_timetrial',
+	array(
+		'capability'        => 'edit_theme_options',
+		'default'           => 0,
+		'sanitize_callback' => 'mhbasictheme_slug_sanitize_radio' ,
+		'transport' => 'refresh' // or postMessage,
+	)
+);
+
+$wp_customize->add_control(
+	'activate_honeypot_timetrial',
+	array(
+		'type' => 'radio',
+		'section' => 'spamSettings', // Add a default or your own section
+		'label' => __( 'Honeypot Time Trial?' ),
+		'choices' => array(
+			0 => __( 'No' ),
+			1 => __( 'Yes' ),
+	))
+);
+
 $wp_customize->add_setting( 'comment_delay', array(
 	'type' => 'theme_mod', // or 'option'
 	'capability' => 'edit_theme_options',
-	'default'  => 45,
+	'default'  => 30,
 	'transport' => 'refresh' // or postMessage,
 ) );
 $wp_customize->add_control('comment_delay', array(
 	'label'   => 'Comment Delay',
 	'section' => 'spamSettings',
 	'type'    => 'select',
-	'description' => __( 'honepot technique: This is to prevent Spam using a time feature' ),
+	'description' => __( 'honeypot technique: This is to prevent Spam using a time feature' ),
 	'choices' => array(
+		15 => '15 seconds',
 		30 => '30 seconds',
 		45 => '45 seconds',
 		60 => '1 minute',
 		120 => '2 minutes',
 		180 => '3 minutes',
-		300 => '5 minutes',
+		240 => '4 minutes',
 	)
 ));
-
 
 
 $wp_customize->add_setting( 'rating_mini_text', array(

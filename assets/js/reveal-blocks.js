@@ -1641,7 +1641,7 @@
                 
                 ),
                 el( InnerBlocks, {
-                    allowedBlocks:  ['core/heading', 'core/pullquote', 'core/file', 'core/button']
+                    allowedBlocks:  ['core/heading', 'core/pullquote', 'core/file',  'core/html',  'core/button']
                     // allowedBlocks:  REVEAL_ALLOWED_BLOCKS
                   }
                 )

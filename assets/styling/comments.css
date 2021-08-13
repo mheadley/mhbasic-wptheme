@@ -346,7 +346,7 @@ div.comment:first-of-type {
   max-width: 100%;
 }
 
-.comments-wrapper label.important-note-a11y {
+label.important-note-a11y {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   -webkit-clip-path: inset(50%);
