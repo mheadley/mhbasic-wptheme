@@ -215,10 +215,6 @@ require get_template_directory() . '/inc/newsletter-settings.php';
 function mhbasictheme_register_styles() {
 
     $theme_version = wp_get_theme()->get( 'Version' );
-
-
-
-
     // Add print CSS.
     wp_enqueue_style( 'mhbasictheme-print-style', get_template_directory_uri() . '/assets/css/print.css', array('layout', 'responsive', 'screen' ) , $theme_version, 'print' );
 
@@ -234,8 +230,7 @@ function mhbasictheme_register_styles() {
 ///DEV //////////
   //wp_enqueue_style('dev', get_template_directory_uri() .'/assets/styling/comments.css' );
 
-    wp_enqueue_style('responsive', get_template_directory_uri() .'/assets/css/responsive.css', array('layout', 'mhbasictheme-style', 'screen' ), $theme_version );
-      if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
           wp_enqueue_script( 'comment-reply' );
     }
     if ( is_front_page() ) {
@@ -253,6 +248,9 @@ function mhbasictheme_register_styles() {
 
     // Add output of Customizer settings as inline style.
     wp_add_inline_style( 'mhbasictheme-style', mhbasictheme_get_customizer_css( 'front-end' ), array('layout', 'responsive', 'mhbasictheme-style' ) );
+
+
+    wp_enqueue_style('responsive', get_template_directory_uri() .'/assets/css/responsive.css', array('layout', 'mhbasictheme-style', 'screen' ), $theme_version );
 
 }
 
