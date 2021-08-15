@@ -234,7 +234,7 @@ function mhbasictheme_register_styles() {
 ///DEV //////////
   //wp_enqueue_style('dev', get_template_directory_uri() .'/assets/styling/comments.css' );
 
-    wp_enqueue_style('responsive', get_template_directory_uri() .'/assets/css/responsive.css' );
+    wp_enqueue_style('responsive', get_template_directory_uri() .'/assets/css/responsive.css', array('layout', 'mhbasictheme-style', 'screen' ), $theme_version );
       if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
           wp_enqueue_script( 'comment-reply' );
     }
