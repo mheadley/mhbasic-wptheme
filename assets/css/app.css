@@ -290,6 +290,10 @@ body.body-enter-active {
   opacity: 1;
 }
 
+body.wp-customizer #customize-controls {
+  font-size: 1.4rem;
+}
+
 b, strong {
   font-weight: 700;
 }
@@ -360,7 +364,6 @@ b, strong {
 }
 
 #footerWrapper .content-wrap, #footerWrapper .content-wrap > div {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -504,7 +507,6 @@ b, strong {
 #headerWrapper .header-navigation-wrapper .main-menu {
   display: inline-block;
   width: 100%;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
@@ -598,7 +600,6 @@ b, strong {
   padding-left: 15px;
   padding-top: 20px;
   font-weight: 400;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -698,7 +699,6 @@ b, strong {
 }
 
 .widget-content {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -796,7 +796,6 @@ b, strong {
 }
 
 #contentWrapper .woocommerce-wrapper, #contentWrapper .post-content-list-container .post-part-spacer .cxb {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -1089,7 +1088,6 @@ b, strong {
   position: relative;
   overflow: hidden;
   display: block;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -1163,7 +1161,6 @@ b, strong {
 }
 
 .masthead .feature-overlay .post-meta-wrapper .meta-wrapper {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 16px;
@@ -1185,7 +1182,6 @@ b, strong {
 
 .masthead .entry-title {
   padding-bottom: 5px;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 44px;
@@ -1232,7 +1228,6 @@ b, strong {
 
 .entry-header {
   position: relative;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 16px;
@@ -1242,7 +1237,6 @@ b, strong {
 
 .entry-header .entry-title {
   padding: 20px;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 42px;
@@ -1307,7 +1301,6 @@ b, strong {
 }
 
 .post-part h2, .post-part h3, .post-part h4, .post-part h5, .post-part h6 {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -1490,7 +1483,6 @@ b, strong {
 }
 
 .post-part-container .post-part-media.video .mgb video::cue {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -1518,7 +1510,6 @@ b, strong {
 
 .basic-part .post-part-block-content {
   padding: 40px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 22px;
@@ -1544,7 +1535,6 @@ b, strong {
 }
 
 .fullwidth-image-part .post-part-block-content {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 34px;
@@ -1597,7 +1587,6 @@ b, strong {
 }
 
 .post-footer .post-meta-edit-link-wrapper {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 20px;
@@ -1607,7 +1596,6 @@ b, strong {
 
 .post-footer .author-bio {
   padding: 20px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
@@ -1617,7 +1605,6 @@ b, strong {
 
 .post-meta-single-top {
   padding: 20px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -1641,7 +1628,6 @@ b, strong {
 }
 
 .pagination-single .previous-post, .pagination-single .next-post {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 22px;
@@ -1697,7 +1683,6 @@ b, strong {
   width: 100%;
   text-align: center;
   left: 0;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -1719,7 +1704,6 @@ b, strong {
 
 .post-list-archive .post .content-wrap .archive-content .txb .type, .post-list-archive .type-page .content-wrap .archive-content .txb .type, .post-list-archive .hentry .content-wrap .archive-content .txb .type, .post-list-archive > article .content-wrap .archive-content .txb .type {
   display: block;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 18px;
@@ -1734,7 +1718,6 @@ b, strong {
 }
 
 .post-list-archive .post .post-excerpt, .post-list-archive .type-page .post-excerpt, .post-list-archive .hentry .post-excerpt, .post-list-archive > article .post-excerpt {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 22px;
@@ -1755,7 +1738,6 @@ b, strong {
 }
 
 .post-list-archive .post .entry-title, .post-list-archive .type-page .entry-title, .post-list-archive .hentry .entry-title, .post-list-archive > article .entry-title {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -1780,7 +1762,6 @@ b, strong {
 .archive-header {
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -1800,7 +1781,6 @@ b, strong {
 }
 
 .pagination-wrapper .nav-links {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 20px;
@@ -1838,7 +1818,6 @@ b, strong {
   max-width: 1200px;
   padding: 10px 20px;
   margin: 0 auto;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -1930,7 +1909,6 @@ b, strong {
 .comment-reply-title {
   margin: 0 0 40px 0;
   text-align: center;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -2112,7 +2090,6 @@ div.comment:first-of-type {
 }
 
 .comment-respond {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
@@ -2232,7 +2209,6 @@ div.comment:first-of-type {
 }
 
 .comments {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;

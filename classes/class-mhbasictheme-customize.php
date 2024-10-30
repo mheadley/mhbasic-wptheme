@@ -254,7 +254,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 			$wp_customize->add_section(
 				'options',
 				array(
-					'title'      => __( 'Basic Settings', 'mhbasictheme' ),
+					'title'      => __( 'General Settings', 'mhbasictheme' ),
 					'priority'   => 40,
 					'capability' => 'edit_theme_options',
 				)
@@ -279,7 +279,61 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 					'priority' => 10,
 					'label'    => __( 'Show search in header', 'mhbasictheme' ),
 				)
+			);			
+			
+			$wp_customize->add_setting(
+				'enable_footer_attribution',
+				array(
+					'capability'        => 'edit_theme_options',
+					'default'           => false,
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+				)
 			);
+
+			$wp_customize->add_control(
+				'enable_footer_attribution',
+				array(
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show theme designer in footer', 'mhbasictheme' ),
+				)
+			); 		
+			
+			$wp_customize->add_setting(
+				'enable_footer_copyright',
+				array(
+					'capability'        => 'edit_theme_options',
+					'default'           => true,
+					'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+				)
+			);
+
+			$wp_customize->add_control(
+				'enable_footer_copyright',
+				array(
+					'type'     => 'checkbox',
+					'section'  => 'options',
+					'priority' => 10,
+					'label'    => __( 'Show basic copyright in footer', 'mhbasictheme' ),
+				)
+			);
+
+
+
+			$wp_customize->add_setting( 'footer_copyright_text', 
+				array(
+					'type' => 'theme_mod', // or 'option'
+					'capability' => 'edit_theme_options',
+					'transport' => 'refresh' // or postMessage,
+				) );
+
+			$wp_customize->add_control('footer_copyright_text', array(
+				'label'   => 'Custom Footer Copyright text',
+				'section' => 'options',
+				'type'    => 'textarea',
+			));
+
 
 			$wp_customize->add_setting(
 				'enable_scroll_effects',
@@ -409,7 +463,7 @@ if ( ! class_exists( 'mhbasictheme_Customize' ) ) {
 					'type'     => 'checkbox',
 					'section'  => 'options',
 					'priority' => 10,
-					'label'    => __( 'Show Bottom Page Navigation', 'mhbasictheme' ),
+					'label'    => __( 'Show Post Navigation', 'mhbasictheme' ),
 				)
 			);
 

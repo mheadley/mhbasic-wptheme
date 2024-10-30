@@ -37,8 +37,17 @@
           <footer>
             <div class="content-wrap">
 <?php  if(has_nav_menu( 'footer' )){ ?> <div class="footer-links"><?php wp_nav_menu( array( 'menu_id' => '', 'container' => 'ul', 'theme_location' => 'footer', 'items_wrap' => '<ul>%3$s</ul>') );  ?>  </div> <?php }?>
-              <div class="footer-copyright">&copy; copyright <?php echo date("Y"); ?> <?php echo bloginfo("name"); ?>
-               all rights reserved.<span style="opacity: 0.7; display: block; font-size: 90%; font-weight: 400; padding-top: 10px; text-decoration: none;">theme designed by <a href="https://mheadley.com" target="_blank" style="color: inherit; text-decoration: none;">mheadley inc.</a></span></div>
+<?php if(get_theme_mod( 'enable_footer_copyright', false ) || get_theme_mod( 'enable_footer_attribution', false ) || get_theme_mod( 'footer_copyright_text', false )){ ?> <div class="footer-copyright">
+                
+              <?php if(get_theme_mod( 'enable_footer_copyright', false )){ ?><span  style="display: block;">&copy; copyright <?php echo date("Y"); ?> <?php echo bloginfo("name"); ?>
+               all rights reserved. </span> <?php }?>
+               <?php if(get_theme_mod( 'footer_copyright_text', false )){ ?><span class="custom-copyright" style="display: block;"><?php echo get_theme_mod( 'footer_copyright_text' ); ?></span>
+                <?php }?>
+               
+               <?php if(get_theme_mod( 'enable_footer_attribution', false )){ ?> <span style="opacity: 0.7; display: block; font-size: 90%; font-weight: 400; padding-top: 10px; text-decoration: none;">theme designed by <a href="https://mheadley.com" target="_blank" style="color: inherit; text-decoration: none;">mheadley inc.</a></span>
+              <?php }?>
+              
+              </div>  <?php }?>
               
           </div>
       </footer>

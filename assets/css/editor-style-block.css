@@ -248,21 +248,12 @@ table {
   word-wrap: break-word;
 }
 
-html {
+#windowContainer {
   font-size: 62.5%;
 }
 
-body {
+#windowContainer > div {
   font-size: 0;
-}
-
-#wpwrap {
-  font-size: 1.4rem;
-  line-height: 1.45;
-}
-
-#wpwrap .edit-post-sidebar p:not(.edit-post-post-link__preview-label) {
-  margin-bottom: 15px;
 }
 
 /* ------------------------------------------- */

@@ -3,16 +3,7 @@
  */
 /* Establish the grid-container element.  */
 /* Align an element to the grid. */
-.post-content-list-container {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
-}
-
-.post-content-list-container h1, .post-content-list-container h2, .post-content-list-container h3, .post-content-list-container h4, .post-content-list-container h6, .post-content-list-container .wp-block-pullquote, .post-content-list-container .alo_easymail_widget_ok {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
-}
-
 .post-content-list-container form {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -30,7 +21,6 @@
 }
 
 .post-content-list-container #alo_easymail_page {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;

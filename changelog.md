@@ -1,6 +1,20 @@
 # Change Log
 
 
+
+## [1.9.0] - 2024-10-30
+
+**Implemented enhancements:**
+
+- add option to remove attribution for design of theme
+- add custom options for copyright text area
+- change license togpl v3
+
+**Fixed bugs:**
+- php error on ratings resovled 
+
+
+
 ## [1.6.0] - 2021-08-09
 
 **Implemented enhancements:**

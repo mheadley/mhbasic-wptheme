@@ -25,6 +25,11 @@ body {
   &.body-enter-active{
       opacity: 1;
   }
+  &.wp-customizer{
+      #customize-controls{
+        font-size: 1.4rem;
+      }
+  }
 }
 
 b, strong {

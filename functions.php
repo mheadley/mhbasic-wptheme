@@ -61,11 +61,11 @@ function mhbasictheme_theme_support() {
 
     // Set post thumbnail size.
     set_post_thumbnail_size( 800, 600, array('center', 'center') );
-    add_image_size( 'mini-image', 400, 300,  array('center', 'center') );
+    add_image_size( 'mini-format', 400, 300 );
 
     // Add custom image size used in Cover Template.
-    add_image_size( 'large-format', 1200, 3000 );
-    add_image_size( 'mhbasictheme-//descreen', 2048, 9999 );
+    add_image_size( 'large-format', 1400, 3000 );
+    add_image_size( 'mhbasictheme-fullscreen', 2048, 9999 );
     //add_image_size( 'hd-image', 3000, 3000 );
 
     // remove_image_size( 'large' );
@@ -107,6 +107,7 @@ function mhbasictheme_theme_support() {
         return array_merge( $sizes, array(
             'large-format' => __( 'Large Format Image' ),
             'mhbasictheme-fullscreen' => __( 'Full Screen Cover' ),
+            'mini-format' => __( 'Mini Image Image' ),
             'thumbnail' => __( 'Thumbnail Image' ),
         ) );
     }
@@ -790,11 +791,11 @@ function mhbasictheme_get_elements_array() {
                 
             ),
             'background' => array(
-                'color'            => array( ':root .has-background-color', 'button', '.button', '.faux-button', '.wp-block-button__link', '.wp-block-file__button',  'input[type="submit"]', '.wp-block-button', '.comment-reply-link', '.has-background.has-primary-background-color:not(.has-text-color)', '.has-background.has-primary-background-color *:not(.has-text-color)', '.has-background.has-accent-background-color:not(.has-text-color)', '.has-background.has-accent-background-color *:not(.has-text-color)','#contentWrapper .comment-reply-link', '#contentWrapper  input[type="submit"]', '#contentWrapper  .button', '#contentWrapper  .faux-button',  '#contentWrapper  input[type="button"]', '#contentWrapper .woocommerce-wrapper button.single_add_to_cart_button' ),
+            'color'            => array( ':root .has-background-color', 'button', '.button', '.faux-button', '.wp-block-file__button'/*,  'input[type="submit"]'*/, '.wp-block-button', '.comment-reply-link', '.has-background.has-primary-background-color:not(.has-text-color)', '.has-background.has-primary-background-color *:not(.has-text-color)', '.has-background.has-accent-background-color:not(.has-text-color)', '.has-background.has-accent-background-color *:not(.has-text-color)','#contentWrapper .comment-reply-link'/*, '#contentWrapper  input[type="submit"]', '#contentWrapper  .button', '#contentWrapper  .faux-button',  '#contentWrapper  input[type="button"]', '#contentWrapper .woocommerce-wrapper button.single_add_to_cart_button'*/ ),
                 'background-color' => array( ':root .has-background-background-color' ),
             ),
             'text'       => array(
-                'color'            => array( 'body', '.entry-title a', ':root .has-primary-color', '.woocommerce-wrapper .woocommerce-loop-product__title', '.woocommerce .product-name a'),
+                'color'            => array( 'body', '.entry-title a', ':root .has-primary-color', '.woocommerce-wrapper .woocommerce-loop-product__title', '.woocommerce .product-name a',  'input[type="submit"]'),
                 'background-color' => array( ':root .has-primary-background-color' ),
                 'fill'    => array('.post-footer .post-meta-wrapper svg *', '.ratings-container .rating-item svg *' ),
                 'stroke'    => array('.ratings-container .rating-item svg *' ),
@@ -821,7 +822,7 @@ function mhbasictheme_get_elements_array() {
                 'background-color' => array( '#site-header ', '.menu-modal', '.menu-modal-inner', '.search-modal-inner', '.archive-header', '.singular .entry-header', '.singular .featured-media:before', '.wp-block-pullquote:before' ),
             ),
             'text'       => array(
-                'color'               => array( '.header-footer-group', 'body:not(.overlay-header) #site-header .toggle', '.menu-modal .toggle', '.headerDrawer .widget-content' ),
+                'color'               => array(  'body:not(.overlay-header) #site-header .toggle', '.menu-modal .toggle', '.headerDrawer .widget-content' ),
                 'background-color'    => array( 'body:not(.overlay-header) .primary-menu ul' ),
                 'border-bottom-color' => array( 'body:not(.overlay-header) .primary-menu > li > ul:after' ),
                 'border-left-color'   => array( 'body:not(.overlay-header) .primary-menu ul ul:after' ),
@@ -860,17 +861,17 @@ function mhbasictheme_get_elements_array() {
         ),
         'menu' => array(
             'accent'     => array(
-                'color'               => array('#headerWrapper',  '#headerWrapper .header-navigation-wrapper a:hover'  ),
+                'color'               => array( '#headerWrapper .header-navigation-wrapper a:hover'  ),
                 'background-color' => array( '' ),
-                'fill'   => array( '#headerWrapper .header-right svg *:hover', '#mobileMenuToggle svg *:hover')
+                'fill'   => array( '#headerWrapper .header-right svg *:hover', '#mobileMenuToggle svg *:hover','#headerWrapper .header-right a:hover svg *' )
             ),
             'background' => array(
                 'color'            => array( '' ),
                 'background-color' => array( '#headerWrapper .bg-wrapper' ),
             ),
             'text'       => array(
-                'color'            => array( '#headerWrapper .header-right a',  '#headerWrapper .header-navigation-wrapper a', '#mobileMenuToggle'),
-                'background-color'    => array( ),
+                'color'            => array( '#headerWrapper', '#headerWrapper .header-right a:not(.wp-element-button)',  '#headerWrapper .header-navigation-wrapper a', '#mobileMenuToggle'),
+                'background-color'    => array('#mobileMenuToggle .toggle-menu-icon > span' ),
                 'border-bottom-color' => array( ),
                 'border-left-color'   => array( ),
                 'fill'   => array( '#headerWrapper .header-right svg *', '#mobileMenuToggle svg *')
@@ -933,33 +934,39 @@ function mhbasictheme_get_elements_array() {
 
 
 
-  add_action( 'init', 'mhbasictheme_layout_custom_register_blocks' );
+add_action( 'init', 'mhbasictheme_layout_custom_register_blocks' );
   
 
+if(!function_exists('mhbasictheme_get_default_allowed_blocks')){
+  function mhbasictheme_get_default_allowed_blocks(){
+    $baseBlocks = array( 'core/paragraph',  'core/gallery', 'core/file',  'core/html', 'core/pullquote', 'core/button', 'core/list', 'core/heading','core/table');
+    return $baseBlocks;
+  }
+}
+
   
+if(!function_exists('mhbasictheme_get_allowed_block_types')){
+  function mhbasictheme_get_allowed_block_types(){
+    $pagesBlocksAllowed = array_merge(mhbasictheme_get_default_allowed_blocks(), array(
+      'mhbasictheme-layout/image-part',
+      'mhbasictheme-layout/post-part'
+      )
+    );
+    return $pagesBlocksAllowed;
+  }
+}
 
-
- 
 if(!function_exists('mhbasictheme_allowed_block_types')){
-    function mhbasictheme_allowed_block_types( $allowed_blocks, $post ) {
-
-        if (  $post->post_type !== 'post' && $post->post_type !== 'page' ) {
+    function mhbasictheme_allowed_block_types( $allowed_blocks, $block_editor_context ) {
+        if (  $block_editor_context->post->post_type !== 'post' && $block_editor_context->post->post_type !== 'page' ) {
             return $allowed_blocks;
         }
-      
-        $baseBlocks = array( 'core/paragraph',  'core/gallery', 'core/file',  'core/html', 'core/pullquote', 'core/button', 'core/list', 'core/heading','core/table');
-        $pagesBlocksAllowed = array_merge($baseBlocks, array(
-            'mhbasictheme-layout/image-part',
-            'mhbasictheme-layout/post-part'
-          )
-        );
-        return $pagesBlocksAllowed; 
-        
-       
+        $blocksAllowedInEditor = mhbasictheme_get_allowed_block_types();
+        return $blocksAllowedInEditor; 
     }
 }
 
-add_filter( 'allowed_block_types', 'mhbasictheme_allowed_block_types', 10, 2 );
+add_filter( 'allowed_block_types_all', 'mhbasictheme_allowed_block_types', 10, 2 );
 
 
 
@@ -1077,7 +1084,7 @@ function post_properties_box_html($post)
 
 
 function mhbasictheme_add_image_insert_override($sizes){
-    unset( $sizes['thumbnail']);
+    //unset( $sizes['thumbnail']);
     unset( $sizes['medium']);
     unset( $sizes['medium_large']);
     unset( $sizes['large']);
@@ -1249,7 +1256,7 @@ function mhbasictheme_comment_rating_require_rating( $commentdata ) {
 
 function mhbasictheme_get_average_rating( $id ) {
 	$comments = get_approved_comments( $id );
-
+    $ratings = array(0, 0);
 	if ( $comments ) {
 		$i = 0;
 		$total = 0;
@@ -1261,20 +1268,18 @@ function mhbasictheme_get_average_rating( $id ) {
 			}
 		}
 
-		if ( 0 === $i ) {
-			return false;
-		} else {
-			return array(round( $total / $i, 1 ) . '', $i);
+		if ( 0 < $i ) {
+			$ratings =  array(round( $total / $i, 1 ) . '', $i);
 		}
-	} else {
-		return false;
 	}
+		
+    return $ratings;
 }
 
 function mhbasictheme_show_post_rating($id){
   $rating = mhbasictheme_get_average_rating($id);
   $i = 0;
-  if($rating[1] === 0 || !$rating[0] ){
+  if($rating[1] == 0 || !$rating[0] ){
     return false;
   }
   ?>

@@ -7,7 +7,6 @@
   position: relative;
   overflow: hidden;
   display: block;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -81,7 +80,6 @@
 }
 
 .masthead .feature-overlay .post-meta-wrapper .meta-wrapper {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 16px;
@@ -103,7 +101,6 @@
 
 .masthead .entry-title {
   padding-bottom: 5px;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 44px;
@@ -150,7 +147,6 @@
 
 .entry-header {
   position: relative;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 16px;
@@ -160,7 +156,6 @@
 
 .entry-header .entry-title {
   padding: 20px;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 42px;
@@ -225,7 +220,6 @@
 }
 
 .post-part h2, .post-part h3, .post-part h4, .post-part h5, .post-part h6 {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -408,7 +402,6 @@
 }
 
 .post-part-container .post-part-media.video .mgb video::cue {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -436,7 +429,6 @@
 
 .basic-part .post-part-block-content {
   padding: 40px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 22px;
@@ -462,7 +454,6 @@
 }
 
 .fullwidth-image-part .post-part-block-content {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 34px;
@@ -515,7 +506,6 @@
 }
 
 .post-footer .post-meta-edit-link-wrapper {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 20px;
@@ -525,7 +515,6 @@
 
 .post-footer .author-bio {
   padding: 20px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
@@ -535,7 +524,6 @@
 
 .post-meta-single-top {
   padding: 20px 0px;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -559,7 +547,6 @@
 }
 
 .pagination-single .previous-post, .pagination-single .next-post {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 22px;
@@ -615,7 +602,6 @@
   width: 100%;
   text-align: center;
   left: 0;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -637,7 +623,6 @@
 
 .post-list-archive .post .content-wrap .archive-content .txb .type, .post-list-archive .type-page .content-wrap .archive-content .txb .type, .post-list-archive .hentry .content-wrap .archive-content .txb .type, .post-list-archive > article .content-wrap .archive-content .txb .type {
   display: block;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 18px;
@@ -652,7 +637,6 @@
 }
 
 .post-list-archive .post .post-excerpt, .post-list-archive .type-page .post-excerpt, .post-list-archive .hentry .post-excerpt, .post-list-archive > article .post-excerpt {
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 22px;
@@ -673,7 +657,6 @@
 }
 
 .post-list-archive .post .entry-title, .post-list-archive .type-page .entry-title, .post-list-archive .hentry .entry-title, .post-list-archive > article .entry-title {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -698,7 +681,6 @@
 .archive-header {
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;
@@ -718,7 +700,6 @@
 }
 
 .pagination-wrapper .nav-links {
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 20px;
@@ -738,10 +719,6 @@
   opacity: 0.8;
 }
 
-.pagination-wrapper .nav-links .prev > span:nth-child(1), .pagination-wrapper .nav-links .next > span:nth-child(2) {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .pagination-wrapper a {
   text-decoration: none;
 }
@@ -756,7 +733,6 @@
   max-width: 1200px;
   padding: 10px 20px;
   margin: 0 auto;
-  font-family: Garamond, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;

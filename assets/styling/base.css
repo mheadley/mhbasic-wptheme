@@ -41,6 +41,10 @@ body.body-enter-active {
   opacity: 1;
 }
 
+body.wp-customizer #customize-controls {
+  font-size: 1.4rem;
+}
+
 b, strong {
   font-weight: 700;
 }
@@ -111,7 +115,6 @@ b, strong {
 }
 
 #footerWrapper .content-wrap, #footerWrapper .content-wrap > div {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -255,7 +258,6 @@ b, strong {
 #headerWrapper .header-navigation-wrapper .main-menu {
   display: inline-block;
   width: 100%;
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
@@ -349,7 +351,6 @@ b, strong {
   padding-left: 15px;
   padding-top: 20px;
   font-weight: 400;
-  font-family: Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 14px;
@@ -449,7 +450,6 @@ b, strong {
 }
 
 .widget-content {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
@@ -547,7 +547,6 @@ b, strong {
 }
 
 #contentWrapper .woocommerce-wrapper, #contentWrapper .post-content-list-container .post-part-spacer .cxb {
-  font-family: Tahoma,'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;

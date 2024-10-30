@@ -2,19 +2,19 @@
 @import "../styling/reset";
 @import "../styling/_mixins";
 
-html {
+#windowContainer{
   font-size: 62.5%;
 }
-body{
+#windowContainer > div{
   font-size: 0;
 }
-#wpwrap{
-  font-size: 1.4rem;
-  line-height: 1.45;
-  .edit-post-sidebar p:not(.edit-post-post-link__preview-label){
-    margin-bottom: 15px;
-  }
-}
+// #wpwrap{
+//   font-size: 1.4rem;
+//   line-height: 1.45;
+//   .edit-post-sidebar p:not(.edit-post-post-link__preview-label){
+//     margin-bottom: 15px;
+//   }
+// }
 /* ------------------------------------------- */
 
 /*	MH basic Theme Editor Styles — Block Editor

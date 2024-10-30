@@ -35,7 +35,7 @@
 		wp_body_open();
 		?>
     <input id="interfaceToggle" name="interfaceToggle" type="checkbox" /> 
-    <input id="contactToggle" name="contactToggle" type="checkbox" /> 
+   <?php if(is_active_sidebar( 'contact-1' )) { ?> <input id="contactToggle" name="contactToggle" type="checkbox" /> <?php } ?>
     <div id="windowContainer">
       <div id="headerWrapper" <?php if(has_custom_logo() ){ echo "class='logo-present-header'"; } ?>>
           <div class="bg-wrapper"></div>

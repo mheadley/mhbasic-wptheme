@@ -151,8 +151,8 @@
         default: 1
       },
       body:{
-        type: 'html',
-        source: 'children',
+        type: 'string',
+        source: 'html',
         selector: '.section-content-body-text',
       },
       media2ID: {
@@ -1074,10 +1074,12 @@
                   itemprop: "description",
                   content: (function(){ 
                     var stringIt = "";
-                    for (var key in attributes.body) {
-                      stringIt =  stringIt + attributes.body[key].props.children.join(" ");
-                    }
-                    return stringIt;
+                    // for (var key in attributes.body) {
+                    //   //stringIt =  stringIt + attributes.body[key].props.children.join(" ");
+                    //   //stringIt =  stringIt + attributes.body[key].props.children.join(" ");
+                    // }
+                    //return stringIt;
+                    return attributes.body;
                   })()
                 })
 

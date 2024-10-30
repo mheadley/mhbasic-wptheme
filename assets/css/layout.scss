@@ -2,10 +2,11 @@
 @import "../styling/_grid";
 @import "../styling/_mixins";
 
+
 .post-content-list-container{	
-  font-family:  Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
+  //font-family:  Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   h1, h2, h3, h4, h6, .wp-block-pullquote, .alo_easymail_widget_ok{
-    font-family:   Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
+    //font-family:   Tahoma, 'Trebuchet MS', 'Montserrat', Verdana, Geneva, sans-serif;
   }
   form{
     @include body-font(18,30, 400);
