@@ -2,6 +2,18 @@
 
 
 
+## [1.9.1] - 2024-12-09
+
+**Implemented enhancements:**
+- ratings and comment schema update
+
+**Fixed bugs:**
+
+- update schema info for author bio/review snippets
+
+
+
+
 ## [1.9.0] - 2024-10-30
 
 **Implemented enhancements:**

@@ -10,8 +10,7 @@ body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
 
 html {
   line-height: 1;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
@@ -82,11 +81,9 @@ body {
 a {
   background: 0 0;
 }
-
 a:focus {
   outline: thin dotted;
 }
-
 a:active, a:hover {
   outline: 0;
 }
@@ -104,8 +101,7 @@ dfn {
 }
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
 }
 
@@ -115,7 +111,7 @@ mark {
 }
 
 code, kbd, pre, samp {
-  font-family: monospace,serif;
+  font-family: monospace, serif;
   font-size: 1em;
 }
 
@@ -124,7 +120,7 @@ pre {
 }
 
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: "“" "”" "‘" "’";
 }
 
 small {
@@ -143,11 +139,11 @@ sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
-  top: -.5em;
+  top: -0.5em;
 }
 
 sub {
-  bottom: -.25em;
+  bottom: -0.25em;
 }
 
 img {
@@ -165,7 +161,7 @@ figure {
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
-  padding: .35em .625em .75em;
+  padding: 0.35em 0.625em 0.75em;
 }
 
 legend {
@@ -202,17 +198,13 @@ button[disabled], html input[disabled] {
 }
 
 input[type=checkbox], input[type=radio] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
-
 input[type=search] {
   -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-
 input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -233,16 +225,13 @@ table {
 }
 
 * {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
   word-break: break-word;
   word-wrap: break-word;
 }
-
 *:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
   word-break: break-word;
   word-wrap: break-word;
@@ -264,7 +253,6 @@ table {
   -moz-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
 }
-
 .editor-styles-wrapper > * {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 18px;
@@ -275,14 +263,12 @@ table {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
   }
 }
-
 .page-section-panel {
   display: block;
   position: relative;
   border-bottom: 2px solid #b1b1b1;
   margin-bottom: 10px;
 }
-
 .page-section-panel .section-content-media-container {
   min-height: 20px;
   display: block;
@@ -291,29 +277,24 @@ table {
   background-repeat: no-repeat;
   position: relative;
 }
-
 .page-section-panel .section-content-media-container.has-media {
   min-height: 200px;
 }
-
 .page-section-panel .section-content-media-container video {
   width: 400px;
   height: 300px;
 }
-
 .page-section-panel .section-content-media-container .video-captions {
   display: inline-block;
   position: absolute;
   left: 340px;
   top: 70px;
 }
-
 .page-section-panel .section-content-media-container .video-poster {
   padding: 5px;
   margin: 5px 0px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .page-section-panel .section-content-media-container .video-timings {
   display: inline-block;
   position: absolute;
@@ -321,21 +302,17 @@ table {
   top: 10px;
   min-width: 200px;
 }
-
 .page-section-panel .section-content-media-container .video-timings div {
   display: inline-block;
   padding-right: 10px;
 }
-
 .page-section-panel .section-content-container {
   position: relative;
   font-size: 0px;
 }
-
 .page-section-panel .section-content-container > div {
   font-size: 18px;
 }
-
 .page-section-panel .section-content-container .editor-container-half {
   display: inline-block;
   width: 50%;
@@ -343,5 +320,4 @@ table {
 
 @media (min-width: 480px) {
   /* STRUCTURE */
-}
-/*# sourceMappingURL=editor-style-block.css.map */
+}/*# sourceMappingURL=editor-style-block.css.map */

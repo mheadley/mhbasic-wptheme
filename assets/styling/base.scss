@@ -201,7 +201,7 @@ b, strong {
       position: relative;
       display: inline-block;
       height: 100%;
-      overflow: auto;
+      overflow: visible;
     }
     @extend  %base-transition;
     .main-menu{
@@ -383,7 +383,7 @@ b, strong {
   }
 } 
 
-.post-content-list-container{	
+.post-content-list-container{
   position: relative; 	
   .post-password-form{	
     display: inline-block; max-width: 600px; padding: 80px;	

@@ -19,6 +19,43 @@
   };
   const REVEAL_ALLOWED_BLOCKS = [  'core/paragraph',  'core/gallery', 'core/pullquote', 'core/file', 'core/html',  'core/button', 'core/list', 'core/heading','core/table'];
 
+
+  const FEATURE_ALLOWED_BLOCKS = [  'core/paragraph',  'core/pullquote',   'core/button', 'core/list', 'core/heading'];
+  const blockTransitionDuration = [
+    { label: 'Default Duration', value: '' },
+    { label: '0 Sec Duration', value: '0' },
+    { label: '1/2 Sec Duration', value: '500' },
+    { label: '3/4 Sec Duration', value: '750' },
+    { label: '1 Sec Duration', value: '1000' },
+    { label: '1.5 Sec Duration', value: '1500' },
+    { label: '2 Sec Duration', value: '2000' },
+    { label: '3 Sec Duration', value: '3000' },
+  ];
+  const blockTransitionType = [
+    { label: 'None', value: '' },
+    { label: 'Fade In/Out', value: 'fadeInOut' },
+    { label: 'Fade In/ No Out', value: 'fadeInNoOut' },
+    { label: 'Down In / Up Out', value: 'dinUpOut' },
+    { label: 'Down In / No Out', value: 'downInNoOut' },
+    { label: 'Left In/ Right Out', value: 'linRout' },
+    { label: 'Left In / No Out', value: 'leftInNoOut' },
+    { label: 'Right In / Left Out', value: 'rightInOut' },
+    { label: 'Right In / No Out', value: 'rightInNoOut' },
+    { label: 'Up In / Down Out', value: 'upInOut' },
+    { label: 'Up In / No Out', value: 'upInNoOut' },
+    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
+    { label: 'Grow In / No Out', value: 'growInNoOut' },
+  ];
+  const blockTransitionDelay = [
+    { label: 'No Delay', value: '0' },
+    { label: '1/2 Sec Delay', value: '500' },
+    { label: '3/4 Sec Delay', value: '750' },
+    { label: '1 Sec Delay', value: '1000' },
+    { label: '1.5 Sec Delay', value: '1500' },
+    { label: '2 Sec Delay', value: '2000' },
+    { label: '3 Sec Delay', value: '3000' },
+  ];
+
   function makeImageRelative(url){
     if(BLOCKCONFIG && BLOCKCONFIG.relativePaths === 0){
       return url;
@@ -601,21 +638,7 @@
               el( SelectControl,
                 {
                   className: 'item-transition-type', 
-                  options : [
-                    { label: 'None', value: '' },
-                    { label: 'Fade In/Out', value: 'fadeInOut' },
-                    { label: 'Fade In/ No Out', value: 'fadeInNoOut' },
-                    { label: 'Down In / Up Out', value: 'dinUpOut' },
-                    { label: 'Down In / No Out', value: 'downInNoOut' },
-                    { label: 'Left In/ Right Out', value: 'linRout' },
-                    { label: 'Left In / No Out', value: 'leftInNoOut' },
-                    { label: 'Right In / Left Out', value: 'rightInOut' },
-                    { label: 'Right In / No Out', value: 'rightInNoOut' },
-                    { label: 'Up In / Down Out', value: 'upInOut' },
-                    { label: 'Up In / No Out', value: 'upInNoOut' },
-                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
-                    { label: 'Grow In / No Out', value: 'growInNoOut' },
-                  ],
+                  options : blockTransitionType,
                   onChange: function (newTr) {
                     props.setAttributes({ boxOnetransition: newTr }) 
                   },
@@ -625,16 +648,7 @@
               el( SelectControl,
                 {
                   className: 'item-transition-type', 
-                  options : [
-                    { label: 'Default Duration', value: '' },
-                    { label: '0 Sec Duration', value: '0' },
-                    { label: '1/2 Sec Duration', value: '500' },
-                    { label: '3/4 Sec Duration', value: '750' },
-                    { label: '1 Sec Duration', value: '1000' },
-                    { label: '1.5 Sec Duration', value: '1500' },
-                    { label: '2 Sec Duration', value: '2000' },
-                    { label: '3 Sec Duration', value: '3000' },
-                  ],
+                  options : blockTransitionDuration,
                   onChange: function (newTr) {
                     props.setAttributes({ boxOnetransitionTime: newTr }) 
                   },
@@ -650,15 +664,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'No Delay', value: '0' },
-                      { label: '1/2 Sec Delay', value: '500' },
-                      { label: '3/4 Sec Delay', value: '750' },
-                      { label: '1 Sec Delay', value: '1000' },
-                      { label: '1.5 Sec Delay', value: '1500' },
-                      { label: '2 Sec Delay', value: '2000' },
-                      { label: '3 Sec Delay', value: '3000' },
-                    ],
+                    options : blockTransitionDelay,
                     onChange: function (newTr) {
                       props.setAttributes({ boxOnetransitionDelay: newTr }) 
                     },
@@ -681,21 +687,7 @@
               el( SelectControl,
                 {
                   className: 'item-transition-type', 
-                  options : [
-                    { label: 'None', value: '' },
-                    { label: 'Fade In/Out', value: 'fadeInOut' },
-                    { label: 'Fade In/ No Out', value: 'fadeInNoOut' },
-                    { label: 'Down In / Up Out', value: 'dinUpOut' },
-                    { label: 'Down In / No Out', value: 'downInNoOut' },
-                    { label: 'Left In/ Right Out', value: 'linRout' },
-                    { label: 'Left In / No Out', value: 'leftInNoOut' },
-                    { label: 'Right In / Left Out', value: 'rightInOut' },
-                    { label: 'Right In / No Out', value: 'rightInNoOut' },
-                    { label: 'Up In / Down Out', value: 'upInOut' },
-                    { label: 'Up In / No Out', value: 'upInNoOut' },
-                    { label: 'Grow In / Small Out', value: 'growInSmallOut' },
-                    { label: 'Grow In / No Out', value: 'growInNoOut' },
-                  ],
+                  options : blockTransitionType,
                   onChange: function (newTr) {
                     props.setAttributes({ boxTwotransition: newTr }) 
                   },
@@ -712,16 +704,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'Default Duration', value: '' },
-                      { label: '0 Sec Duration', value: '0' },
-                      { label: '1/2 Sec Duration', value: '500' },
-                      { label: '3/4 Sec Duration', value: '750' },
-                      { label: '1 Sec Duration', value: '1000' },
-                      { label: '1.5 Sec Duration', value: '1500' },
-                      { label: '2 Sec Duration', value: '2000' },
-                      { label: '3 Sec Duration', value: '3000' },
-                    ],
+                    options : blockTransitionDuration,
                     onChange: function (newTr) {
                       props.setAttributes({ boxTwotransitionTime: newTr }) 
                     },
@@ -737,15 +720,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'No Delay', value: '0' },
-                      { label: '1/2 Sec Delay', value: '500' },
-                      { label: '3/4 Sec Delay', value: '750' },
-                      { label: '1 Sec Delay', value: '1000' },
-                      { label: '1.5 Sec Delay', value: '1500' },
-                      { label: '2 Sec Delay', value: '2000' },
-                      { label: '3 Sec Delay', value: '3000' },
-                    ],
+                    options : blockTransitionDelay,
                     onChange: function (newTr) {
                       props.setAttributes({ boxTwotransitionDelay: newTr }) 
                     },
@@ -1450,19 +1425,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'None', value: '' },
-                      { label: 'Fade In/Out', value: 'fadeInOut' },
-                      { label: 'Fade In/ No Out', value: 'fadeInNoOut' },
-                      { label: 'Down In / Up Out', value: 'dinUpOut' },
-                      { label: 'Down In / No Out', value: 'downInNoOut' },
-                      { label: 'Left In/ Right Out', value: 'linRout' },
-                      { label: 'Left In / No Out', value: 'leftInNoOut' },
-                      { label: 'Right In / Left Out', value: 'rightInOut' },
-                      { label: 'Right In / No Out', value: 'rightInNoOut' },
-                      { label: 'Up In / Down Out', value: 'upInOut' },
-                      { label: 'Up In / No Out', value: 'upInNoOut' },
-                    ],
+                    options : blockTransitionType,
                     onChange: function (newTr) {
                       props.setAttributes({ boxOnetransition: newTr }) 
                     },
@@ -1472,16 +1435,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'Default Duration', value: '' },
-                      { label: '0 Sec Duration', value: '0' },
-                      { label: '1/2 Sec Duration', value: '500' },
-                      { label: '3/4 Sec Duration', value: '750' },
-                      { label: '1 Sec Duration', value: '1000' },
-                      { label: '1.5 Sec Duration', value: '1500' },
-                      { label: '2 Sec Duration', value: '2000' },
-                      { label: '3 Sec Duration', value: '3000' },
-                    ],
+                    options : blockTransitionDuration,
                     onChange: function (newTr) {
                       props.setAttributes({ boxOnetransitionTime: newTr }) 
                     },
@@ -1497,15 +1451,7 @@
                   el( SelectControl,
                     {
                       className: 'item-transition-type', 
-                      options : [
-                        { label: 'No Delay', value: '0' },
-                        { label: '1/2 Sec Delay', value: '500' },
-                        { label: '3/4 Sec Delay', value: '750' },
-                        { label: '1 Sec Delay', value: '1000' },
-                        { label: '1.5 Sec Delay', value: '1500' },
-                        { label: '2 Sec Delay', value: '2000' },
-                        { label: '3 Sec Delay', value: '3000' },
-                      ],
+                      options : blockTransitionDelay,
                       onChange: function (newTr) {
                         props.setAttributes({ boxOnetransitionDelay: newTr }) 
                       },
@@ -1528,21 +1474,7 @@
                 el( SelectControl,
                   {
                     className: 'item-transition-type', 
-                    options : [
-                      { label: 'None', value: '' },
-                      { label: 'Fade In/Out', value: 'fadeInOut' },
-                      { label: 'Fade In/ No Out', value: 'fadeInNoOut' },
-                      { label: 'Down In / Up Out', value: 'dinUpOut' },
-                      { label: 'Down In / No Out', value: 'downInNoOut' },
-                      { label: 'Left In/ Right Out', value: 'linRout' },
-                      { label: 'Left In / No Out', value: 'leftInNoOut' },
-                      { label: 'Right In / Left Out', value: 'rightInOut' },
-                      { label: 'Right In / No Out', value: 'rightInNoOut' },
-                      { label: 'Up In / Down Out', value: 'upInOut' },
-                      { label: 'Up In / No Out', value: 'upInNoOut' },
-                      { label: 'Grow In / Small Out', value: 'growInSmallOut' },
-                      { label: 'Grow In / No Out', value: 'growInNoOut' },
-                    ],
+                    options : blockTransitionType,
                     onChange: function (newTr) {
                       props.setAttributes({ boxTwotransition: newTr }) 
                     },
@@ -1559,16 +1491,7 @@
                   el( SelectControl,
                     {
                       className: 'item-transition-type', 
-                      options : [
-                        { label: 'Default Duration', value: '' },
-                        { label: '0 Sec Duration', value: '0' },
-                        { label: '1/2 Sec Duration', value: '500' },
-                        { label: '3/4 Sec Duration', value: '750' },
-                        { label: '1 Sec Duration', value: '1000' },
-                        { label: '1.5 Sec Duration', value: '1500' },
-                        { label: '2 Sec Duration', value: '2000' },
-                        { label: '3 Sec Duration', value: '3000' },
-                      ],
+                      options : blockTransitionDuration,
                       onChange: function (newTr) {
                         props.setAttributes({ boxTwotransitionTime: newTr }) 
                       },
@@ -1584,15 +1507,7 @@
                   el( SelectControl,
                     {
                       className: 'item-transition-type', 
-                      options : [
-                        { label: 'No Delay', value: '0' },
-                        { label: '1/2 Sec Delay', value: '500' },
-                        { label: '3/4 Sec Delay', value: '750' },
-                        { label: '1 Sec Delay', value: '1000' },
-                        { label: '1.5 Sec Delay', value: '1500' },
-                        { label: '2 Sec Delay', value: '2000' },
-                        { label: '3 Sec Delay', value: '3000' },
-                      ],
+                      options : blockTransitionDelay,
                       onChange: function (newTr) {
                         props.setAttributes({ boxTwotransitionDelay: newTr }) 
                       },

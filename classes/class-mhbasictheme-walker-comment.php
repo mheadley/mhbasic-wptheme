@@ -57,7 +57,7 @@ if ( ! class_exists( 'mhbasictheme_Walker_Comment' ) ) {
 							}
 
 							printf(
-								'<span class="fn" itemprop="author">%1$s</span><span class="screen-reader-text says">%2$s</span>',
+								'<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="schema-info"><span class="fn" itemprop="name">%1$s</span><span class="screen-reader-text says">%2$s</span></span>',
 								esc_html( $comment_author ),
 								__( 'says:', 'mhbasictheme' )
 							);

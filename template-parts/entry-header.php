@@ -143,11 +143,11 @@ if ( true === $show_categories && has_category()) {
 <meta itemprop="url" content="<?php echo get_bloginfo('url') ?>">
 <meta itemprop="headline" content="<?php echo get_the_title() ?>">
 <time datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished"></time>
-<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="schmema-info">
+<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="schema-info">
   <meta itemprop="name" content="<?php echo get_the_author_meta('first_name') . " ". get_the_author_meta('last_name'); ?> ">
 </span>
 
-<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"  class="schmema-info">
+<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"  class="schema-info">
   <meta  itemprop="name" content="<?php echo get_bloginfo('name') ?>">
   <meta itemprop="url" content="<?php echo get_bloginfo('url') ?>">
   <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">

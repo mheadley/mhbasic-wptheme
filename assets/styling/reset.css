@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -9,8 +10,7 @@ body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
 
 html {
   line-height: 1;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
@@ -81,11 +81,9 @@ body {
 a {
   background: 0 0;
 }
-
 a:focus {
   outline: thin dotted;
 }
-
 a:active, a:hover {
   outline: 0;
 }
@@ -103,8 +101,7 @@ dfn {
 }
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
 }
 
@@ -114,7 +111,7 @@ mark {
 }
 
 code, kbd, pre, samp {
-  font-family: monospace,serif;
+  font-family: monospace, serif;
   font-size: 1em;
 }
 
@@ -123,7 +120,7 @@ pre {
 }
 
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: "“" "”" "‘" "’";
 }
 
 small {
@@ -142,11 +139,11 @@ sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
-  top: -.5em;
+  top: -0.5em;
 }
 
 sub {
-  bottom: -.25em;
+  bottom: -0.25em;
 }
 
 img {
@@ -164,7 +161,7 @@ figure {
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
-  padding: .35em .625em .75em;
+  padding: 0.35em 0.625em 0.75em;
 }
 
 legend {
@@ -201,17 +198,13 @@ button[disabled], html input[disabled] {
 }
 
 input[type=checkbox], input[type=radio] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
-
 input[type=search] {
   -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-
 input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -232,18 +225,14 @@ table {
 }
 
 * {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
   word-break: break-word;
   word-wrap: break-word;
 }
-
 *:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   -webkit-font-smoothing: antialiased;
   word-break: break-word;
   word-wrap: break-word;
-}
-/*# sourceMappingURL=reset.css.map */
+}/*# sourceMappingURL=reset.css.map */

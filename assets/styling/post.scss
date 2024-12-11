@@ -135,6 +135,7 @@
 .post-content-list-container{
   position: relative;
   display: block; clear: both;
+  padding-top: 30px;
   .post-inner{
     display: block; position: relative;
   }
@@ -302,7 +303,6 @@
 .basic-part{
   position: relative;
   .post-part-block-content{
-    padding: 40px 0px;
     @include body-font(22,36);
     p{
       margin-bottom: 20px;
@@ -319,7 +319,6 @@
   .post-part-block-content{
     @include body-font(34,38,700);
     text-shadow: 1px 1px 0px #000000, 0px 0px 0px #444444;
-    padding: 40px 0px;
     &.text-align-left{
       text-align: left;
     }

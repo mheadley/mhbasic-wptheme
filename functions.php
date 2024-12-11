@@ -1101,6 +1101,8 @@ if(!function_exists('get_special_summary_exclusion_blocks')){
         return array();
       }
 }
+add_filter('special_summary_exclusion_blocks', 'get_special_summary_exclusion_blocks' );
+
 
 if(!function_exists('get_logo_background_classes')){
     function get_logo_background_classes(){
@@ -1110,10 +1112,11 @@ if(!function_exists('get_logo_background_classes')){
 
 function get_content_without_special_blocks(){
     $exclusionBlocks = parse_blocks( get_the_content() );
+    $exclude_array =  apply_filters( 'special_summary_exclusion_blocks', 10 );
     $content_markup  = '';
     if(count($exclusionBlocks) > 0){
         foreach ( $exclusionBlocks as $block ) {
-            if ( in_array($block['blockName'], get_special_summary_exclusion_blocks())) {	
+            if ( in_array($block['blockName'],  $exclude_array )) {	
                 continue;
             }
             $content_markup .= render_block( $block );

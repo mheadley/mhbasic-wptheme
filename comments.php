@@ -20,40 +20,45 @@ if ( post_password_required() ) {
 
 
 if ( comments_open() || pings_open() ) {
-
-	$i = 0;
-	$aggregateRating = " ";
+	$ratingAmount = 0;
+	$aggregateRating = 0;
 	if ( $comments ) {
 		$total = 0;
 		foreach( $comments as $comment ){
 			$rate = get_comment_meta( $comment->comment_ID, 'rating', true );
 			if( isset( $rate ) && '' !== $rate ) {
-				$i++;
+				$ratingAmount++;
 				$total += $rate;
 			}
 		}
-		if ( 0 === $i ) {
-			//return false;
-		} else {
-			$aggregateRating =  round( $total / $i, 1 );?>
-
-
-<?php
+		if ($aggregateRating > 0 && $ratingAmount > 0){
+			$aggregateRating =  round( $total / $ratingAmount, 1 );
 		}
+		
 	}
 ?>
+<?php 
+if(count($comments) > 0){
 
+?>
 	<span itemprop="interactionStatistic" itemscope itemtype="https://schema.org/InteractionCounter">
     <meta itemprop="interactionType" content="https://schema.org/CommentAction"/>
     <meta itemprop="userInteractionCount" content="<?php echo count($comments);?>" />
 	</span>
-
+	<?php 
+}
+if ($ratingAmount > 0){
+?>
 		<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
   		<meta itemprop="ratingValue" content="<?php echo  $aggregateRating; ?>" />
-  		<meta itemprop="reviewCount" content="<?php echo  $i; ?>" />
+  		<meta itemprop="reviewCount" content="<?php echo 	$ratingAmount; ?>" />
       <meta itemprop="worstRating" content = "0">
       <meta itemprop="BestRating" content = "5">
 		</span>
+		<?php 
+
+}
+?>
   <div  class="lyt">
     <div class="cxb">
       <?php

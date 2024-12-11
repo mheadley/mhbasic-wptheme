@@ -101,7 +101,7 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
   a {
     page-break-inside: avoid;
   }
-  a[href^="http"]:after {
+  a[href^=http]:after {
     content: " < " attr(href) "> ";
   }
   a:after > img {
@@ -133,7 +133,6 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     color: #000;
   }
 }
-
 body {
   position: relative;
   overflow: auto;
@@ -149,14 +148,12 @@ body {
 
 #bodyWrapper #contentWrapper.block-transitions-enabled .bxTr {
   opacity: 1;
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 #bodyWrapper, #contentWrapper {
-  -webkit-column-break-inside: auto;
-          break-inside: auto;
+  -moz-column-break-inside: auto;
+       break-inside: auto;
   position: relative;
   overflow: auto;
-}
-/*# sourceMappingURL=print.css.map */
+}/*# sourceMappingURL=print.css.map */
